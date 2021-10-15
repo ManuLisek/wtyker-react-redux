@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './Navigation';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -17,6 +18,7 @@ const MainLayout = ({children}) => {
 
   return(
     <LayoutContainer>
+      <Navigation/>
       <Layout>
         {children}
       </Layout>
