@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import home from './images/home.png';
 import logo from './images/Wtyker(1).png';
 import styled from 'styled-components';
@@ -57,7 +58,9 @@ function Home() {
         <Logo src={logo}/>
         <p>Zrób zakupy we Wtykerze</p>
         <p>w wybuchowo niskich cenach!</p>
-        <Button>Zacznij zakupy</Button>
+        <Link to='/products'>
+          <Button>Zacznij zakupy</Button>
+        </Link>
       </IntroContainer>
     </Container>
   );
