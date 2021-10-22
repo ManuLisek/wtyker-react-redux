@@ -1,5 +1,7 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
+import Footer from './Footer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -16,12 +18,19 @@ align-items: center;
 
 const MainLayout = ({children}) => {
 
+  const location = useLocation();
+
   return(
     <LayoutContainer>
       <Navigation/>
       <Layout>
         {children}
       </Layout>
+      {
+        location.pathname != '/'
+          ? <Footer />
+          : ''
+      }
     </LayoutContainer>
   );
 };
