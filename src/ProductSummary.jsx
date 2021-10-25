@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -58,12 +59,19 @@ function ProductSummary(props) {
   });
 
   return (
-    <Container>
-      <Image src={product.image1} width="200" height="156" alt={product.title}/>
-      <Title>{product.title}</Title>
-      <Price>{product.price}zł</Price>
-      <Tags>{tags}</Tags>
-    </Container>
+    <Link to={{
+      pathname: `/product/${product.title}`,
+      state: {
+        product,
+      },
+    }} >
+      <Container>
+        <Image src={product.image1} width="200" height="156" alt={product.title}/>
+        <Title>{product.title}</Title>
+        <Price>{product.price}zł</Price>
+        <Tags>{tags}</Tags>
+      </Container>
+    </Link>
   );
 }
 

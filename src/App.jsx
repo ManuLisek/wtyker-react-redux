@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import ProductsList from './ProductsList';
+import Product from './Product';
 import MainLayout from './MainLayout';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/products' component={ProductsList} />
+          <Route exact path='/product/:title' component={Product} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
