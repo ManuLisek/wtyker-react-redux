@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SimpleImageSlider from 'react-simple-image-slider';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
@@ -76,10 +76,23 @@ const Product = () => {
 
   const location = useLocation();
   const { product } = location.state;
+  const [itemsAmount, setItemsAmount] = useState(1);
   const images = [
     { url: product.image1 },
     { url: product.image2 },
   ];
+
+  function handleIncreaseItemsAmount(){
+    if(itemsAmount < 9){
+      setItemsAmount(prevstate => prevstate + 1);
+    }
+  }
+
+  function handleDecreaseItemsAmount(){
+    if(itemsAmount > 1){
+      setItemsAmount(prevstate => prevstate - 1);
+    }
+  }
 
   return (
     <Container>
@@ -99,9 +112,9 @@ const Product = () => {
         <Description>{product.description}</Description>
         <AmountContainer>
           <div>Ilość:</div>
-          <ButtonChangeAmount>-</ButtonChangeAmount>
-          <div>1</div>
-          <ButtonChangeAmount>+</ButtonChangeAmount>
+          <ButtonChangeAmount onClick={handleDecreaseItemsAmount}>-</ButtonChangeAmount>
+          <div>{itemsAmount}</div>
+          <ButtonChangeAmount onClick={handleIncreaseItemsAmount}>+</ButtonChangeAmount>
         </AmountContainer>
         <ButtonAddToCart>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
         </ButtonAddToCart>
