@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductSummary from './ProductSummary';
+import FilterBar from './FilterBar';
 import {products} from './products/products';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
@@ -26,6 +27,7 @@ const ProductsList = () => {
   ));
   return(
     <SectionContainer>
+      <FilterBar/>
       <List>
         {productsList}
       </List>

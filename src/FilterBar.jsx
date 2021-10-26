@@ -1,0 +1,117 @@
+import React from 'react';
+import {products} from './products/products';
+import styled from 'styled-components';
+import uuid from 'react-uuid';
+
+const FilterBarContainer = styled.div`
+background-color: white;
+padding: 5px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+padding: 10px;
+width: 200px;
+height: fit-content;
+position: absolute;
+left: 0;
+top: 250px;
+margin: 20px 0 40px 0;
+`;
+
+const FilterBarContent = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const Label = styled.label`
+margin: 4px;
+display: block;
+`;
+
+const Checkbox = styled.input`
+margin-right: 3px;
+`;
+
+const ButtonClear = styled.button`
+background-color: #007065;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+margin: 20px;
+display: block;
+`;
+
+const InputPrice = styled.input`
+max-width: 50px;
+text-align: right;
+margin: 0 4px 0 4px;
+`;
+
+
+function FilterBar() {
+
+  const allTags = [];
+  const allBrands = [];
+  
+  products.map(product => {
+    allTags.push(...product.tags);
+    allBrands.push(product.brand);
+  });
+  
+  const tags = [...new Set(allTags)];
+  const brands = [...new Set(allBrands)];
+
+  return (
+    <FilterBarContainer>
+      <FilterBarContent>
+        <Label>
+        Cena 
+        </Label>
+        <Label>
+                od:
+          <InputPrice type='number'  min='50' max='3400'/>
+        zł
+        </Label>
+        <Label>
+                do:
+          <InputPrice type='number' min='50' max='3400'/>
+        zł
+        </Label>
+        <details>
+          <summary>Filtruj po kategoriach</summary>
+          <div>
+            {tags.map(tag => (
+              <Label key={uuid()}>
+                <Checkbox type='checkbox'/>
+                {tag}
+              </Label>
+            ))}
+          </div>
+        </details>
+        <details>
+          <summary>Filtruj po marce</summary>
+          <div>
+            {brands.map(brand => (
+              <Label key={uuid()}>
+                <Checkbox type='checkbox'/>
+                {brand}
+              </Label>
+            ))}
+          </div>
+        </details>
+        <Label>Sortuj:</Label>
+        <select>
+          <option>---</option>
+          <option>Alfabetycznie</option>
+          <option>Po cenie: rosnąco</option>
+          <option>Po cenie: malejąco</option>
+        </select>
+        <ButtonClear>Wyczyść</ButtonClear>
+      </FilterBarContent>
+    </FilterBarContainer>
+  );
+}
+
+export default FilterBar;
