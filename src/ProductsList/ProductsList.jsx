@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductSummary from './ProductSummary';
-import FilterBar from './FilterBar';
-import {products} from './products/products';
+import ProductSummary from '../ProductSummary';
+import FilterBar from '../FilterBar';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
 
@@ -20,7 +20,9 @@ list-style-type: none;
 `;
 
 
-const ProductsList = () => {
+const ProductsList = ({products}) => {
+
+  console.log(products);
 
   const productsList = products.map(product => (
     <ProductSummary key={uuid()} product={product} />
@@ -34,5 +36,9 @@ const ProductsList = () => {
     </SectionContainer>
 
   );};
+
+ProductsList.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default ProductsList;

@@ -15,7 +15,7 @@ align-items: center;
 
 const Logo = styled.img`
 height: 100px;
-margin: 10px;
+margin: 30px 0 0 30px;
 `;
 
 const SearchIconsContainer = styled.div`
