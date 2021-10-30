@@ -1,5 +1,5 @@
 import React from 'react';
-import {products} from './products/products';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
 
@@ -50,18 +50,22 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar() {
+function FilterBar({products, changePrice, price}) {
 
   const allTags = [];
   const allBrands = [];
   
-  products.map(product => {
+  products.forEach(product => {
     allTags.push(...product.tags);
     allBrands.push(product.brand);
   });
   
   const tags = [...new Set(allTags)];
   const brands = [...new Set(allBrands)];
+
+  function handlePrice(type, value){
+    changePrice(type, value);
+  }
 
   return (
     <FilterBarContainer>
@@ -71,12 +75,12 @@ function FilterBar() {
         </Label>
         <Label>
                 od:
-          <InputPrice type='number'  min='50' max='3400'/>
+          <InputPrice type='number'  min='50' max='3400' value={price.from} onChange={event => handlePrice('from', event.currentTarget.value)}/>
         zł
         </Label>
         <Label>
                 do:
-          <InputPrice type='number' min='50' max='3400'/>
+          <InputPrice type='number' min='50' max='3400'  value={price.to} onChange={event => handlePrice('to', event.currentTarget.value)}/>
         zł
         </Label>
         <details>
@@ -113,5 +117,11 @@ function FilterBar() {
     </FilterBarContainer>
   );
 }
+
+FilterBar.propTypes = {
+  products: PropTypes.array,
+  changePrice: PropTypes.func,
+  price: PropTypes.object,
+};
 
 export default FilterBar;

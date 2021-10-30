@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductSummary from '../ProductSummary';
-import FilterBar from '../FilterBar';
+import FilterBar from '../FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
@@ -21,8 +21,6 @@ list-style-type: none;
 
 
 const ProductsList = ({products}) => {
-
-  console.log(products);
 
   const productsList = products.map(product => (
     <ProductSummary key={uuid()} product={product} />

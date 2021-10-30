@@ -6,6 +6,10 @@ import filtersReducer from './filtersRedux';
 const initialState = {
   products,
   searchPhrase: '',
+  price: {
+    from: 50,
+    to: 3400,
+  },
 };
 
 const store = createStore(
