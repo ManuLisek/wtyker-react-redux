@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 
@@ -28,14 +29,25 @@ padding: 10px;
 
 
 
-const Search = () => {
+const Search = ({changeSearchPhrase}) => {
+
+  let textInput = React.createRef();
+
+  function handleClick(){
+    changeSearchPhrase(textInput.current.value);
+    textInput.current.value = '';
+  }
 
   return(
     <SearchContainer>
-      <Input type="text" placeholder="Znajdź produkt"></Input>
-      <Icon className="fas fa-search"></Icon>
+      <Input type="text" placeholder="Znajdź produkt" ref={textInput}></Input>
+      <Icon className="fas fa-search" onClick={handleClick}></Icon>
     </SearchContainer>
   );
+};
+
+Search.propTypes = {
+  changeSearchPhrase: PropTypes.func,
 };
 
 export default Search;

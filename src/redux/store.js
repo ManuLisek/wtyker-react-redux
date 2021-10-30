@@ -5,6 +5,7 @@ import filtersReducer from './filtersRedux';
 
 const initialState = {
   products,
+  searchPhrase: '',
 };
 
 const store = createStore(

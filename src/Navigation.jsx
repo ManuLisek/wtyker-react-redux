@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './images/Wtyker.png';
 import styled from 'styled-components';
-import Search from './Search';
+import Search from './Search/SearchContainer';
 
 const NavContainer = styled.nav`
 display: flex;
