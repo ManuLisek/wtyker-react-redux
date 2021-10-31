@@ -50,7 +50,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, changePrice, price, checkedTags, addTag}) {
+function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag}) {
 
   const allTags = [];
   const allBrands = [];
@@ -70,6 +70,8 @@ function FilterBar({products, changePrice, price, checkedTags, addTag}) {
   function handleTags(tag, checked){
     if(checked) {
       addTag(tag);
+    } else {
+      removeTag(tag);
     }
   }
 
@@ -130,6 +132,7 @@ FilterBar.propTypes = {
   price: PropTypes.object,
   checkedTags: PropTypes.array,
   addTag: PropTypes.func,
+  removeTag: PropTypes.func,
 };
 
 export default FilterBar;
