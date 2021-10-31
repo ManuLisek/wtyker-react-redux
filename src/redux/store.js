@@ -10,6 +10,7 @@ const initialState = {
     from: 50,
     to: 3400,
   },
+  checkedTags: [],
 };
 
 const store = createStore(

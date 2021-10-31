@@ -50,7 +50,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, changePrice, price}) {
+function FilterBar({products, changePrice, price, checkedTags, addTag}) {
 
   const allTags = [];
   const allBrands = [];
@@ -65,6 +65,12 @@ function FilterBar({products, changePrice, price}) {
 
   function handlePrice(type, value){
     changePrice(type, value);
+  }
+
+  function handleTags(tag, checked){
+    if(checked) {
+      addTag(tag);
+    }
   }
 
   return (
@@ -88,7 +94,7 @@ function FilterBar({products, changePrice, price}) {
           <div>
             {tags.map(tag => (
               <Label key={uuid()}>
-                <Checkbox type='checkbox'/>
+                <Checkbox type='checkbox' checked={checkedTags.indexOf(tag) > -1} onChange={event => handleTags(tag, event.currentTarget.checked)} />
                 {tag}
               </Label>
             ))}
@@ -122,6 +128,8 @@ FilterBar.propTypes = {
   products: PropTypes.array,
   changePrice: PropTypes.func,
   price: PropTypes.object,
+  checkedTags: PropTypes.array,
+  addTag: PropTypes.func,
 };
 
 export default FilterBar;

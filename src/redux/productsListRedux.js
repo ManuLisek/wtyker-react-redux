@@ -1,4 +1,4 @@
-export const getProducts = ({products, searchPhrase, price}) => {
+export const getProducts = ({products, searchPhrase, price, checkedTags}) => {
 
   let output = products;
     
@@ -10,6 +10,9 @@ export const getProducts = ({products, searchPhrase, price}) => {
 
   // filter by price
   output = output.filter(product => (product.price >= price.from && product.price <= price.to));
+
+  //filter by tags
+  output = output.filter(product => checkedTags.every(tag => product.tags.indexOf(tag) > -1));
 
   return output;
 };
