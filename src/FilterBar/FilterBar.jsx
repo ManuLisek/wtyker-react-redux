@@ -50,7 +50,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag}) {
+function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag, checkedBrands, addBrand, removeBrand}) {
 
   const allTags = [];
   const allBrands = [];
@@ -72,6 +72,17 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
       addTag(tag);
     } else {
       removeTag(tag);
+    }
+  }
+
+  function handleBrands(brand, checked){
+    if(checked) {
+      checkedBrands.forEach(checkedBrand => {
+        removeBrand(checkedBrand);
+      });
+      addBrand(brand);
+    } else {
+      removeBrand(brand);
     }
   }
 
@@ -107,7 +118,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
           <div>
             {brands.map(brand => (
               <Label key={uuid()}>
-                <Checkbox type='checkbox'/>
+                <Checkbox type='checkbox' checked={checkedBrands.indexOf(brand) > -1} onChange={event => handleBrands(brand, event.currentTarget.checked)}/>
                 {brand}
               </Label>
             ))}
@@ -133,6 +144,9 @@ FilterBar.propTypes = {
   checkedTags: PropTypes.array,
   addTag: PropTypes.func,
   removeTag: PropTypes.func,
+  checkedBrands: PropTypes.array,
+  addBrand: PropTypes.func,
+  removeBrand: PropTypes.func,
 };
 
 export default FilterBar;
