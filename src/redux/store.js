@@ -12,6 +12,7 @@ const initialState = {
   },
   checkedTags: [],
   checkedBrands: [],
+  sortingKey: '---',
 };
 
 const store = createStore(

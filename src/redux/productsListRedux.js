@@ -1,4 +1,4 @@
-export const getProducts = ({products, searchPhrase, price, checkedTags, checkedBrands}) => {
+export const getProducts = ({products, searchPhrase, price, checkedTags, checkedBrands, sortingKey}) => {
 
   let output = products;
     
@@ -16,6 +16,27 @@ export const getProducts = ({products, searchPhrase, price, checkedTags, checked
 
   //filter by brands
   output = output.filter(product => checkedBrands.every(brand => product.brand.indexOf(brand)  > -1));
+
+  //sorting by sorting key
+  if(sortingKey === 'Alfabetycznie'){
+    output = output.sort(function(a, b){
+      if(a.title < b.title) { return -1; }
+      if(a.title > b.title) { return 1; }
+      return 0;
+    });
+  } else if(sortingKey === 'Po cenie: rosnąco'){
+    output.sort( function( a , b){
+      if(a.price > b.price) return 1;
+      if(a.price < b.price) return -1;
+      return 0;
+    });
+  } else if(sortingKey === 'Po cenie: malejąco'){
+    output.sort( function( a , b){
+      if(a.price > b.price) return -1;
+      if(a.price < b.price) return 1;
+      return 0;
+    });
+  }
 
   return output;
 };

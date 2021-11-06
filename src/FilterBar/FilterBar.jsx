@@ -50,7 +50,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag, checkedBrands, addBrand, removeBrand}) {
+function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag, checkedBrands, addBrand, removeBrand, changeSortingKey}) {
 
   const allTags = [];
   const allBrands = [];
@@ -84,6 +84,10 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
     } else {
       removeBrand(brand);
     }
+  }
+
+  function handleSortingKey(e){
+    changeSortingKey(e.target.value);
   }
 
   return (
@@ -125,7 +129,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
           </div>
         </details>
         <Label>Sortuj:</Label>
-        <select>
+        <select onChange={handleSortingKey}>
           <option>---</option>
           <option>Alfabetycznie</option>
           <option>Po cenie: rosnąco</option>
@@ -147,6 +151,7 @@ FilterBar.propTypes = {
   checkedBrands: PropTypes.array,
   addBrand: PropTypes.func,
   removeBrand: PropTypes.func,
+  changeSortingKey: PropTypes.func,
 };
 
 export default FilterBar;

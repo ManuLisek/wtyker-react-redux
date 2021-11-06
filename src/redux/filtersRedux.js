@@ -15,6 +15,7 @@ export const ADD_TAG = createActionName('ADD_TAG');
 export const REMOVE_TAG = createActionName('REMOVE_TAG');
 export const ADD_BRAND = createActionName('ADD_BRAND');
 export const REMOVE_BRAND = createActionName('REMOVE_BRAND');
+export const CHANGE_KEY = createActionName('CHANGE_KEY');
 
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
@@ -23,6 +24,7 @@ export const addTag = payload => ({payload, type: ADD_TAG});
 export const removeTag = payload => ({payload, type: REMOVE_TAG});
 export const addBrand = payload => ({payload, type: ADD_BRAND});
 export const removeBrand = payload => ({payload, type: REMOVE_BRAND});
+export const changeSortingKey = payload => ({payload, type: CHANGE_KEY});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -56,6 +58,11 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         checkedBrands: statePart.checkedBrands.filter(brand => brand !== action.payload),
+      };
+    case CHANGE_KEY: 
+      return {
+        ...statePart,
+        sortingKey: action.payload,
       };
     default:
       return statePart;
