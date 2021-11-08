@@ -1,12 +1,10 @@
 import {connect} from 'react-redux';
 import FilterBar from '../FilterBar/FilterBar';
-import {getAllProducts, getAllPrices, getAllCheckedTags, getAllCheckedBrands, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey} from '../redux/filtersRedux';
+import {getAllProducts, getAllFilters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters} from '../redux/filtersRedux';
 
 const mapStateToProps = state => ({
   products: getAllProducts(state),
-  price: getAllPrices(state),
-  checkedTags: getAllCheckedTags(state),
-  checkedBrands: getAllCheckedBrands(state),
+  filters: getAllFilters(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,6 +14,7 @@ const mapDispatchToProps = dispatch => ({
   addBrand: brand => dispatch(addBrand(brand)),
   removeBrand: brand => dispatch(removeBrand(brand)),
   changeSortingKey: sortingKey => dispatch(changeSortingKey(sortingKey)),
+  clearFilters: clearedFilters => dispatch(clearFilters(clearedFilters)),
 });
 
 

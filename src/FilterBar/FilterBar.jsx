@@ -1,4 +1,5 @@
 import React from 'react';
+import { filtersInitialState } from '../redux/store';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
@@ -50,7 +51,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag, checkedBrands, addBrand, removeBrand, changeSortingKey}) {
+function FilterBar({products, filters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters}) {
 
   const allTags = [];
   const allBrands = [];
@@ -77,7 +78,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
 
   function handleBrands(brand, checked){
     if(checked) {
-      checkedBrands.forEach(checkedBrand => {
+      filters.checkedBrands.forEach(checkedBrand => {
         removeBrand(checkedBrand);
       });
       addBrand(brand);
@@ -90,6 +91,10 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
     changeSortingKey(e.target.value);
   }
 
+  function handleClearFilters(){
+    clearFilters(filtersInitialState);
+  }
+
   return (
     <FilterBarContainer>
       <FilterBarContent>
@@ -98,12 +103,12 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
         </Label>
         <Label>
                 od:
-          <InputPrice type='number'  min='50' max='3400' value={price.from} onChange={event => handlePrice('from', event.currentTarget.value)}/>
+          <InputPrice type='number'  min='50' max='3400' value={filters.price.from} onChange={event => handlePrice('from', event.currentTarget.value)}/>
         zł
         </Label>
         <Label>
                 do:
-          <InputPrice type='number' min='50' max='3400'  value={price.to} onChange={event => handlePrice('to', event.currentTarget.value)}/>
+          <InputPrice type='number' min='50' max='3400'  value={filters.price.to} onChange={event => handlePrice('to', event.currentTarget.value)}/>
         zł
         </Label>
         <details>
@@ -111,7 +116,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
           <div>
             {tags.map(tag => (
               <Label key={uuid()}>
-                <Checkbox type='checkbox' checked={checkedTags.indexOf(tag) > -1} onChange={event => handleTags(tag, event.currentTarget.checked)} />
+                <Checkbox type='checkbox' checked={filters.checkedTags.indexOf(tag) > -1} onChange={event => handleTags(tag, event.currentTarget.checked)} />
                 {tag}
               </Label>
             ))}
@@ -122,7 +127,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
           <div>
             {brands.map(brand => (
               <Label key={uuid()}>
-                <Checkbox type='checkbox' checked={checkedBrands.indexOf(brand) > -1} onChange={event => handleBrands(brand, event.currentTarget.checked)}/>
+                <Checkbox type='checkbox' checked={filters.checkedBrands.indexOf(brand) > -1} onChange={event => handleBrands(brand, event.currentTarget.checked)}/>
                 {brand}
               </Label>
             ))}
@@ -135,7 +140,7 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
           <option>Po cenie: rosnąco</option>
           <option>Po cenie: malejąco</option>
         </select>
-        <ButtonClear>Wyczyść</ButtonClear>
+        <ButtonClear onClick={handleClearFilters}>Wyczyść</ButtonClear>
       </FilterBarContent>
     </FilterBarContainer>
   );
@@ -143,15 +148,14 @@ function FilterBar({products, changePrice, price, checkedTags, addTag, removeTag
 
 FilterBar.propTypes = {
   products: PropTypes.array,
+  filters: PropTypes.object,
   changePrice: PropTypes.func,
-  price: PropTypes.object,
-  checkedTags: PropTypes.array,
   addTag: PropTypes.func,
   removeTag: PropTypes.func,
-  checkedBrands: PropTypes.array,
   addBrand: PropTypes.func,
   removeBrand: PropTypes.func,
   changeSortingKey: PropTypes.func,
+  clearFilters: PropTypes.func,
 };
 
 export default FilterBar;

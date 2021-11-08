@@ -1,8 +1,7 @@
-/* ACTIONS */
+/* SELECTORS */
+
 export const getAllProducts = ({products}) => products;
-export const getAllPrices = ({price}) => price;
-export const getAllCheckedTags = ({checkedTags}) => checkedTags;
-export const getAllCheckedBrands = ({checkedBrands}) => checkedBrands;
+export const getAllFilters = ({filters}) => filters;
 
 // action name creator
 const reducerName = 'filters';
@@ -16,6 +15,7 @@ export const REMOVE_TAG = createActionName('REMOVE_TAG');
 export const ADD_BRAND = createActionName('ADD_BRAND');
 export const REMOVE_BRAND = createActionName('REMOVE_BRAND');
 export const CHANGE_KEY = createActionName('CHANGE_KEY');
+export const CLEAR_FILTERS = createActionName('CLEAR_FILTERS');
 
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
@@ -25,6 +25,7 @@ export const removeTag = payload => ({payload, type: REMOVE_TAG});
 export const addBrand = payload => ({payload, type: ADD_BRAND});
 export const removeBrand = payload => ({payload, type: REMOVE_BRAND});
 export const changeSortingKey = payload => ({payload, type: CHANGE_KEY});
+export const clearFilters = payload => ({payload, type: CLEAR_FILTERS});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -63,6 +64,11 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         sortingKey: action.payload,
+      };
+    case CLEAR_FILTERS:
+      return{
+        ...statePart,
+        ...action.payload,
       };
     default:
       return statePart;
