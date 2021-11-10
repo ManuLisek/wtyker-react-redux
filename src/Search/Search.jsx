@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -41,7 +42,9 @@ const Search = ({changeSearchPhrase}) => {
   return(
     <SearchContainer>
       <Input type="text" placeholder="Znajdź produkt" ref={textInput}></Input>
-      <Icon className="fas fa-search" onClick={handleClick}></Icon>
+      <Link to='/products'>
+        <Icon className="fas fa-search" onClick={handleClick}></Icon>
+      </Link>
     </SearchContainer>
   );
 };

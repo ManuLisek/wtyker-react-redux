@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
-import {useLocation} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -73,10 +73,10 @@ margin-left: 5px;
 `;
 
 
-const Product = ({cart, addProductToCart}) => {
+const Product = ({cart, products, addProductToCart}) => {
 
-  const location = useLocation();
-  const { product } = location.state;
+  const { id } = useParams();
+  const product = products.find(product => product.id === Number(id));
   const [itemsAmount, setItemsAmount] = useState(1);
   const images = [
     { url: product.image1 },
@@ -139,6 +139,7 @@ const Product = ({cart, addProductToCart}) => {
 
 Product.propTypes = {
   cart: PropTypes.object,
+  products: PropTypes.arrayOf(PropTypes.object),
   addProductToCart: PropTypes.func,
 };
 

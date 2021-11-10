@@ -60,7 +60,7 @@ function ProductSummary(props) {
 
   return (
     <Link to={{
-      pathname: `/product/${product.title}`,
+      pathname: `/product/${product.id}`,
       state: {
         product,
       },
