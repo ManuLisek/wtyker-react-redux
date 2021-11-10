@@ -1,5 +1,5 @@
 import React from 'react';
-import {products} from '../products/products';
+import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
@@ -114,9 +114,11 @@ border: 1px solid white;
 `;
 
 
-function Cart() {
+function Cart({cart}) {
 
-  const allProductsInCart = products.map(productInCart => {
+  console.log(cart);
+
+  const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
       <Tr key={uuid()}>
         <Td><ProductImg src={productInCart.image1}/></Td>
@@ -158,5 +160,9 @@ function Cart() {
     </Container>
   );
 }
+
+Cart.propTypes = {
+  cart: PropTypes.object,
+};
 
 export default Cart;

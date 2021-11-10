@@ -2,8 +2,8 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import ProductsList from './ProductsList/ProductsListContainer';
-import Product from './Product';
-import Cart from './Cart/Cart';
+import Product from './Product/ProductContainer';
+import Cart from './Cart/CartContainer';
 import MainLayout from './MainLayout';
 
 function App() {

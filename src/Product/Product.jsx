@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
@@ -72,7 +73,7 @@ margin-left: 5px;
 `;
 
 
-const Product = () => {
+const Product = ({cart, addProductToCart}) => {
 
   const location = useLocation();
   const { product } = location.state;
@@ -81,6 +82,13 @@ const Product = () => {
     { url: product.image1 },
     { url: product.image2 },
   ];
+  const productToCart = {
+    id: product.id,
+    image: product.image1,
+    title: product.title,
+    quantity: itemsAmount,
+    price: product.price,
+  };
 
   function handleIncreaseItemsAmount(){
     if(itemsAmount < 9){
@@ -91,6 +99,12 @@ const Product = () => {
   function handleDecreaseItemsAmount(){
     if(itemsAmount > 1){
       setItemsAmount(prevstate => prevstate - 1);
+    }
+  }
+
+  function handleAddProductToCart(){
+    if(!cart.productsInCart.some(element => element.id === product.id)){
+      addProductToCart(productToCart);
     }
   }
 
@@ -116,11 +130,16 @@ const Product = () => {
           <div>{itemsAmount}</div>
           <ButtonChangeAmount onClick={handleIncreaseItemsAmount}>+</ButtonChangeAmount>
         </AmountContainer>
-        <ButtonAddToCart>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
+        <ButtonAddToCart onClick={handleAddProductToCart}>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
         </ButtonAddToCart>
       </DescriptionContainer>
     </Container>
   );
+};
+
+Product.propTypes = {
+  cart: PropTypes.object,
+  addProductToCart: PropTypes.func,
 };
 
 
