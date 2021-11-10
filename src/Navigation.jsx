@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import logo from './images/Wtyker.png';
 import styled from 'styled-components';
 import Search from './Search/SearchContainer';
@@ -54,9 +55,11 @@ const Navigation = () => {
       </div>
       <SearchIconsContainer>
         <Search/>
-        <IconCart className="fas fa-shopping-basket">
-          <QuantityInCart>0</QuantityInCart>
-        </IconCart>
+        <Link to='/cart'>
+          <IconCart className="fas fa-shopping-basket">
+            <QuantityInCart>0</QuantityInCart>
+          </IconCart>
+        </Link>
       </SearchIconsContainer>
     </NavContainer>
   );};

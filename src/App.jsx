@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import ProductsList from './ProductsList/ProductsListContainer';
 import Product from './Product';
+import Cart from './Cart/Cart';
 import MainLayout from './MainLayout';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/products' component={ProductsList} />
           <Route exact path='/product/:title' component={Product} />
+          <Route exact path='/cart' component={Cart} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
