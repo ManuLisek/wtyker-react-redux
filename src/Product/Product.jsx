@@ -73,7 +73,7 @@ margin-left: 5px;
 `;
 
 
-const Product = ({cart, products, addProductToCart}) => {
+const Product = ({cart, products, addProductToCart, countProductsInCart}) => {
 
   const { id } = useParams();
   const product = products.find(product => product.id === Number(id));
@@ -102,9 +102,15 @@ const Product = ({cart, products, addProductToCart}) => {
     }
   }
 
+  const quantityArray = cart.productsInCart.map(product => {
+    return product.quantity;
+  });
+  const quantity = quantityArray.reduce((a, b) => a + b, 0) + itemsAmount;
+
   function handleAddProductToCart(){
     if(!cart.productsInCart.some(element => element.id === product.id)){
       addProductToCart(productToCart);
+      countProductsInCart(quantity);
     }
   }
 
@@ -141,6 +147,7 @@ Product.propTypes = {
   cart: PropTypes.object,
   products: PropTypes.arrayOf(PropTypes.object),
   addProductToCart: PropTypes.func,
+  countProductsInCart: PropTypes.func,
 };
 
 

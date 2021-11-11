@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Navigation from './Navigation';
+import Navigation from './Navigation/NavigationContainer';
 import Footer from './Footer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

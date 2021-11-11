@@ -127,7 +127,7 @@ function Cart({cart}) {
         <Td>
           <AmountContainer>
             <ButtonChangeAmount>-</ButtonChangeAmount>
-            1
+            {productInCart.quantity}
             <ButtonChangeAmount>+</ButtonChangeAmount>
           </AmountContainer>
         </Td>

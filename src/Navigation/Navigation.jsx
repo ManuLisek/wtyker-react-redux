@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import logo from './images/Wtyker.png';
+import PropTypes from 'prop-types';
+import logo from '../images/Wtyker.png';
 import styled from 'styled-components';
-import Search from './Search/SearchContainer';
+import Search from '../Search/SearchContainer';
 
 const NavContainer = styled.nav`
 display: flex;
@@ -47,7 +48,7 @@ transform: translate(50%, 10%);
 `;
 
 
-const Navigation = () => {
+const Navigation = ({cart}) => {
   return(
     <NavContainer>
       <div>
@@ -57,11 +58,15 @@ const Navigation = () => {
         <Search/>
         <Link to='/cart'>
           <IconCart className="fas fa-shopping-basket">
-            <QuantityInCart>0</QuantityInCart>
+            <QuantityInCart>{cart.quantityInCart}</QuantityInCart>
           </IconCart>
         </Link>
       </SearchIconsContainer>
     </NavContainer>
   );};
+
+Navigation.propTypes = {
+  cart: PropTypes.object,
+};
 
 export default Navigation;
