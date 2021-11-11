@@ -114,9 +114,34 @@ border: 1px solid white;
 `;
 
 
-function Cart({cart}) {
+function Cart({cart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart}) {
 
-  console.log(cart);
+  const quantityArray = cart.productsInCart.map(product => {
+    return product.quantity;
+  });
+  const quantity = quantityArray.reduce((a, b) => a + b, 0);
+
+  function handleIncreaseQuantity(product){
+    const searchedQuantity = {
+      id: product.id,
+      quantity: product.quantity + 1,
+    };
+    if((product.quantity < 9)){
+      increaseQuantityInCart(searchedQuantity);
+      countProductsInCart(quantity + 1);
+    }
+  }
+    
+  function handleDecreaseQuantity(product){
+    const searchedQuantity = {
+      id: product.id,
+      quantity: product.quantity - 1,
+    };
+    if(product.quantity > 1){
+      decreaseQuantityInCart(searchedQuantity);
+      countProductsInCart(quantity - 1);
+    }
+  }
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
@@ -126,12 +151,12 @@ function Cart({cart}) {
         <Td>{productInCart.price}zł</Td>
         <Td>
           <AmountContainer>
-            <ButtonChangeAmount>-</ButtonChangeAmount>
+            <ButtonChangeAmount onClick={() => handleDecreaseQuantity(productInCart)}>-</ButtonChangeAmount>
             {productInCart.quantity}
-            <ButtonChangeAmount>+</ButtonChangeAmount>
+            <ButtonChangeAmount onClick={() => handleIncreaseQuantity(productInCart)}>+</ButtonChangeAmount>
           </AmountContainer>
         </Td>
-        <TotalPrice className="cart-totalPrice">99zł</TotalPrice>
+        <TotalPrice className="cart-totalPrice">{productInCart.price}</TotalPrice>
         <Td><IconTrash className="fas fa-trash-alt"></IconTrash>
         </Td>
       </Tr>
@@ -163,6 +188,9 @@ function Cart({cart}) {
 
 Cart.propTypes = {
   cart: PropTypes.object,
+  countProductsInCart: PropTypes.func,
+  increaseQuantityInCart: PropTypes.func,
+  decreaseQuantityInCart: PropTypes.func,
 };
 
 export default Cart;
