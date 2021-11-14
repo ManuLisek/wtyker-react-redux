@@ -114,7 +114,7 @@ border: 1px solid white;
 `;
 
 
-function Cart({cart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart}) {
+function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart}) {
 
   const quantityArray = cart.productsInCart.map(product => {
     return product.quantity;
@@ -143,6 +143,11 @@ function Cart({cart, countProductsInCart, increaseQuantityInCart, decreaseQuanti
     }
   }
 
+  function handleRemoveProduct(product){
+    removeProductFromCart(product);
+    countProductsInCart(quantity - product.quantity);
+  }
+
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
       <Tr key={uuid()}>
@@ -157,7 +162,7 @@ function Cart({cart, countProductsInCart, increaseQuantityInCart, decreaseQuanti
           </AmountContainer>
         </Td>
         <TotalPrice className="cart-totalPrice">{productInCart.price}</TotalPrice>
-        <Td><IconTrash className="fas fa-trash-alt"></IconTrash>
+        <Td><IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}></IconTrash>
         </Td>
       </Tr>
     );
@@ -188,6 +193,7 @@ function Cart({cart, countProductsInCart, increaseQuantityInCart, decreaseQuanti
 
 Cart.propTypes = {
   cart: PropTypes.object,
+  removeProductFromCart: PropTypes.func,
   countProductsInCart: PropTypes.func,
   increaseQuantityInCart: PropTypes.func,
   decreaseQuantityInCart: PropTypes.func,
