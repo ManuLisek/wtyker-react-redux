@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Popup from './Popup';
 
 const FooterContainer = styled.footer`
 background-color: #5f6670;
@@ -63,6 +64,18 @@ padding: 10px 20px;
 margin: 15px;
 `;
 
+const CloseBtn = styled.button`
+background-color: #007065;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+margin: 20px;
+&:hover {
+    cursor: pointer;
+}
+`;
+
 const Input = styled.input`
 background-color: white;
 border: 1px solid white;
@@ -72,6 +85,18 @@ border: 1px solid white;
 `;
 
 const Footer = () => {
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  
+  function handleInputValue(event){
+    setInputValue(event.target.value);
+  }
+  
+  function handleClearInputValue(){
+    setShowPopup(true);
+    setInputValue('');
+  }
 
   return(
     <FooterContainer>
@@ -93,8 +118,12 @@ const Footer = () => {
       <Info>
         <Header>Newsletter</Header>
         <p>Zostaw nam swojego maila żeby być na bieżąco z promocjami!</p>
-        <Input type="text" placeholder="Twój adres email..."/>
-        <ButtonNewsletter>Wyślij</ButtonNewsletter>
+        <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={handleInputValue}/>
+        <ButtonNewsletter onClick={() => handleClearInputValue()}>Wyślij</ButtonNewsletter>
+        <Popup trigger={showPopup}>
+          <h3>Teraz nie przegapisz żadnej promocji!</h3>
+          <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>
+        </Popup>
       </Info>
     </FooterContainer>
   );};
