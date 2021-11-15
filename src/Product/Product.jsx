@@ -73,7 +73,7 @@ margin-left: 5px;
 `;
 
 
-const Product = ({cart, products, addProductToCart, countProductsInCart}) => {
+const Product = ({cart, products, addProductToCart, countProductsInCart, countTotalPrice}) => {
 
   const { id } = useParams();
   const product = products.find(product => product.id === Number(id));
@@ -82,13 +82,6 @@ const Product = ({cart, products, addProductToCart, countProductsInCart}) => {
     { url: product.image1 },
     { url: product.image2 },
   ];
-  const productToCart = {
-    id: product.id,
-    image: product.image1,
-    title: product.title,
-    quantity: itemsAmount,
-    price: product.price,
-  };
 
   function handleIncreaseItemsAmount(){
     if(itemsAmount < 9){
@@ -105,12 +98,22 @@ const Product = ({cart, products, addProductToCart, countProductsInCart}) => {
   const quantityArray = cart.productsInCart.map(product => {
     return product.quantity;
   });
-  const quantity = quantityArray.reduce((a, b) => a + b, 0) + itemsAmount;
+  const totalQuantity = quantityArray.reduce((a, b) => a + b, 0) + itemsAmount;
+  const pricesArray = cart.productsInCart.map(product => {
+    return product.price * product.quantity;
+  });
+  const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
+  const totalPrice = (sumOfPrices + cart.delivery + (product.price * itemsAmount)).toFixed(2);
 
   function handleAddProductToCart(){
     if(!cart.productsInCart.some(element => element.id === product.id)){
-      addProductToCart(productToCart);
-      countProductsInCart(quantity);
+      const  productInCart = {
+        ...product,
+        quantity: itemsAmount,
+      };
+      addProductToCart(productInCart);
+      countProductsInCart(totalQuantity);
+      countTotalPrice(totalPrice);
     }
   }
 
@@ -148,6 +151,7 @@ Product.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
   addProductToCart: PropTypes.func,
   countProductsInCart: PropTypes.func,
+  countTotalPrice: PropTypes.func,
 };
 
 

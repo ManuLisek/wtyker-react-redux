@@ -114,12 +114,18 @@ border: 1px solid white;
 `;
 
 
-function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart}) {
+function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) {
 
   const quantityArray = cart.productsInCart.map(product => {
     return product.quantity;
   });
-  const quantity = quantityArray.reduce((a, b) => a + b, 0);
+  const totalQuantity = quantityArray.reduce((a, b) => a + b, 0);
+  const pricesArray = cart.productsInCart.map(product => {
+    return product.price * product.quantity;
+  });
+  const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
+  const totalPrice = sumOfPrices + cart.delivery;
+  const delivery = cart.delivery;
 
   function handleIncreaseQuantity(product){
     const searchedQuantity = {
@@ -128,7 +134,8 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
     };
     if((product.quantity < 9)){
       increaseQuantityInCart(searchedQuantity);
-      countProductsInCart(quantity + 1);
+      countProductsInCart(totalQuantity + 1);
+      countTotalPrice(totalPrice + product.price);
     }
   }
     
@@ -139,13 +146,15 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
     };
     if(product.quantity > 1){
       decreaseQuantityInCart(searchedQuantity);
-      countProductsInCart(quantity - 1);
+      countProductsInCart(totalQuantity - 1);
+      countTotalPrice(totalPrice - product.price);
     }
   }
 
   function handleRemoveProduct(product){
     removeProductFromCart(product);
-    countProductsInCart(quantity - product.quantity);
+    countProductsInCart(totalQuantity - product.quantity);
+    countTotalPrice(totalPrice - product.price);
   }
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
@@ -161,7 +170,7 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
             <ButtonChangeAmount onClick={() => handleIncreaseQuantity(productInCart)}>+</ButtonChangeAmount>
           </AmountContainer>
         </Td>
-        <TotalPrice className="cart-totalPrice">{productInCart.price}</TotalPrice>
+        <TotalPrice className="cart-totalPrice">{(productInCart.quantity * productInCart.price).toFixed(2)}zł</TotalPrice>
         <Td><IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}></IconTrash>
         </Td>
       </Tr>
@@ -179,11 +188,11 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
       <OrderContainer>
         <OrderSummary>
           <Description>Koszt dostawy:</Description>
-          <Amount>20zł</Amount>
+          <Amount>{delivery}zł</Amount>
         </OrderSummary>
         <OrderSummary>
           <Description>Wartość zamówienia:</Description>
-          <Amount>99zł</Amount>
+          <Amount>{cart.totalPrice}zł</Amount>
         </OrderSummary>
         <ButtonConfirm>Zatwierdź zamówienie</ButtonConfirm>
       </OrderContainer>
@@ -197,6 +206,7 @@ Cart.propTypes = {
   countProductsInCart: PropTypes.func,
   increaseQuantityInCart: PropTypes.func,
   decreaseQuantityInCart: PropTypes.func,
+  countTotalPrice: PropTypes.func,
 };
 
 export default Cart;
