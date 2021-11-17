@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Popup from '../Popup';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -113,6 +114,18 @@ border: 1px solid white;
 }
 `;
 
+const CloseBtn = styled.button`
+background-color: #007065;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+margin: 20px;
+&:hover {
+    cursor: pointer;
+}
+`;
+
 
 function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) {
 
@@ -126,6 +139,7 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
   const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
   const totalPrice = sumOfPrices + cart.delivery;
   const delivery = cart.delivery;
+  const [showPopup, setShowPopup] = useState(false);
 
   function handleIncreaseQuantity(product){
     const searchedQuantity = {
@@ -155,6 +169,11 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
     removeProductFromCart(product);
     countProductsInCart(totalQuantity - product.quantity);
     countTotalPrice(totalPrice - product.price);
+  }
+
+  function handleConfirmOrder(){
+    setShowPopup(true);
+    // clearCart(cartInitialState);
   }
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
@@ -194,7 +213,11 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
           <Description>Wartość zamówienia:</Description>
           <Amount>{cart.totalPrice}zł</Amount>
         </OrderSummary>
-        <ButtonConfirm>Zatwierdź zamówienie</ButtonConfirm>
+        <ButtonConfirm onClick={handleConfirmOrder}>Zatwierdź zamówienie</ButtonConfirm>
+        <Popup trigger={showPopup}>
+          <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
+          <CloseBtn onClick={() => setShowPopup(false)}>OK</CloseBtn>
+        </Popup>
       </OrderContainer>
     </Container>
   );
