@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Popup from './Popup';
+import validator from 'validator';
 
 const FooterContainer = styled.footer`
 background-color: #5f6670;
@@ -9,6 +10,7 @@ flex-basis: 100%;
 display: flex;
 justify-content: space-evenly;
 margin-top: 180px;
+padding-bottom: 40px;
 `;
 
 const Header = styled.h3`
@@ -61,7 +63,7 @@ color: white;
 border: none;
 border-radius: 5px;
 padding: 10px 20px;
-margin: 15px;
+margin: 15px 15px 0 15px;
 `;
 
 const CloseBtn = styled.button`
@@ -84,18 +86,35 @@ border: 1px solid white;
 }
 `;
 
+const EmailError = styled.div`
+font-size: 12px;
+color: maroon;
+`;
+
 const Footer = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  
-  function handleInputValue(event){
-    setInputValue(event.target.value);
+  const [emailError, setEmailError] = useState('');
+  const [showEmailError, setShowEmailError] = useState(false);
+
+  function validateEmail(e){
+    const email = e.target.value;
+    setInputValue(email);
+    if (validator.isEmail(email)) {
+      setEmailError('');
+    } else {
+      setEmailError('Podaj poprawny adres email');
+    }
   }
   
-  function handleClearInputValue(){
-    setShowPopup(true);
-    setInputValue('');
+  function handleEmailSent(){
+    if(!emailError){
+      setShowPopup(true);
+      setInputValue('');
+      setEmailError('');
+      setShowEmailError(false);
+    } else setShowEmailError(true);
   }
 
   return(
@@ -118,8 +137,9 @@ const Footer = () => {
       <Info>
         <Header>Newsletter</Header>
         <p>Zostaw nam swojego maila żeby być na bieżąco z promocjami!</p>
-        <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={handleInputValue}/>
-        <ButtonNewsletter onClick={() => handleClearInputValue()}>Wyślij</ButtonNewsletter>
+        <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail}/>
+        <ButtonNewsletter onClick={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
+        <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
         <Popup trigger={showPopup}>
           <h3>Teraz nie przegapisz żadnej promocji!</h3>
           <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>
