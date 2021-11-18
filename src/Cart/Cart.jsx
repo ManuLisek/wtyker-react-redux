@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { cartInitialState } from '../redux/store';
 import Popup from '../Popup';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
@@ -127,7 +128,7 @@ margin: 20px;
 `;
 
 
-function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) {
+function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice, clearCart}) {
 
   const quantityArray = cart.productsInCart.map(product => {
     return product.quantity;
@@ -173,7 +174,6 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
 
   function handleConfirmOrder(){
     setShowPopup(true);
-    // clearCart(cartInitialState);
   }
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
@@ -216,7 +216,7 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
         <ButtonConfirm onClick={handleConfirmOrder}>Zatwierdź zamówienie</ButtonConfirm>
         <Popup trigger={showPopup}>
           <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
-          <CloseBtn onClick={() => setShowPopup(false)}>OK</CloseBtn>
+          <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>OK</CloseBtn>
         </Popup>
       </OrderContainer>
     </Container>
@@ -230,6 +230,7 @@ Cart.propTypes = {
   increaseQuantityInCart: PropTypes.func,
   decreaseQuantityInCart: PropTypes.func,
   countTotalPrice: PropTypes.func,
+  clearCart: PropTypes.func,
 };
 
 export default Cart;

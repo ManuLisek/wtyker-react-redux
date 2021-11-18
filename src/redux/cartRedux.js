@@ -14,6 +14,7 @@ export const COUNT_PRODUCTS = createActionName('COUNT_PRODUCTS');
 export const INCREASE_QUANTITY = createActionName('INCREASE_QUANTITY');
 export const DECREASE_QUANTITY = createActionName('DECREASE_QUANTITY');
 export const COUNT_PRICE = createActionName('COUNT_PRICE');
+export const CLEAR_CART = createActionName('CLEAR_CART');
 
 
 // action creators
@@ -23,6 +24,7 @@ export const countProductsInCart = payload => ({payload, type: COUNT_PRODUCTS});
 export const increaseQuantityInCart = payload => ({payload, type: INCREASE_QUANTITY});
 export const decreaseQuantityInCart = payload => ({payload, type: DECREASE_QUANTITY});
 export const countTotalPrice = payload => ({payload, type: COUNT_PRICE});
+export const clearCart = payload => ({payload, type: CLEAR_CART});
 
 
 // reducer
@@ -73,6 +75,11 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         totalPrice: action.payload,
+      };
+    case CLEAR_CART:
+      return {
+        ...statePart,
+        ...action.payload,
       };
     default:
       return statePart;
