@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import logo from '../images/Wtyker.png';
 import styled from 'styled-components';
 import Search from '../Search/SearchContainer';
 
@@ -53,7 +52,7 @@ const Navigation = ({cart}) => {
     <NavContainer>
       <div>
         <Link to='/'>
-          <Logo src={logo} width="60" height="100" alt="logo"/>
+          <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_vt9mu8.png' width="60" height="100" alt="logo"/>
         </Link>
       </div>
       <SearchIconsContainer>

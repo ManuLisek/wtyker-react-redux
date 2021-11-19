@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import home from './images/home.png';
-import logo from './images/Wtyker(1).png';
+// import logo from './images/Wtyker(1).png';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -52,10 +51,10 @@ function Home() {
   return (
     <Container>
       <ImageContainer>
-        <Image src={home}/>
+        <Image src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/home_fvomsv.webp'/>
       </ImageContainer>
       <IntroContainer>
-        <Logo src={logo}/>
+        <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_1_ln9ki6.png'/>
         <p>Zrób zakupy we Wtykerze</p>
         <p>w wybuchowo niskich cenach!</p>
         <Link to='/products'>

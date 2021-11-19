@@ -81,6 +81,7 @@ margin: 20px;
 const Input = styled.input`
 background-color: white;
 border: 1px solid white;
+padding: 2px;
 &:focus {
     border: 1px solid black;
 }

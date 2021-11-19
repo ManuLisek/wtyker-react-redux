@@ -1,45 +1,3 @@
-import pralkaSzajsungEkstraClean from '../images/pralkaSzajsungEkstraClean.png';
-import pralkaBekaMegaPro from '../images/pralkaBekaMegaPro.png';
-import odkurzaczFilipsSuperShine from '../images/odkurzaczFilipsSuperShine.png';
-import odkurzaczSzamsungHiperFlat from '../images/odkurzaczSzamsungHiperFlat.png';
-import odkurzaczLelektroluksDuoPower from '../images/odkurzaczLelektroluksDuoPower.png';
-import telewizorFilipsEasyControl from '../images/telewizorFilipsEasyControl.png';
-import telewizorKsajomiGigaScreen from '../images/telewizorKsajomiGigaScreen.png';
-import telewizorFilipsUltraLight from '../images/telewizorFilipsUltraLight.png';
-import głośnikJotbelPerfectSound from '../images/głośnikJotbelPerfectSound.png';
-import głośnikMarszalHighVolume from '../images/głośnikMarszalHighVolume.png';
-import lodówkaElgSideBySide from '../images/lodówkaElgSideBySide.png';
-import lodówkaAmikaLightWhite from '../images/lodówkaAmikaLightWhite.png';
-import lodówkaBekaFreshHarvest from '../images/lodówkaBekaFreshHarvest.png';
-import lodówkaSzamsungMysteriousBlack from '../images/lodówkaSzamsungMysteriousBlack.png';
-import lodówkaAmikaFlashInside from '../images/lodówkaAmikaFlashInside.png';
-import dronGreenUfo from '../images/dronGreenUfo.png';
-import dronCrazyWasp from '../images/dronCrazyWasp.png';
-import kuchniaLelektroluksHotAir from '../images/kuchniaLelektroluksHotAir.png';
-import kuchniaLelektroluksEasyGrill from '../images/kuchniaLelektroluksEasyGrill.png';
-import kuchniaAmikaFastCook from '../images/kuchniaAmikaFastCook.png';
-import pralkaSzajsungEkstraClean2 from '../images/pralkaSzajsungEkstraClean2.png';
-import pralkaBekaMegaPro2 from '../images/pralkaBekaMegaPro2.png';
-import odkurzaczFilipsSuperShine2 from '../images/odkurzaczFilipsSuperShine2.png';
-import odkurzaczSzamsungHiperFlat2 from '../images/odkurzaczSzamsungHiperFlat2.png';
-import odkurzaczLelektroluksDuoPower2 from '../images/odkurzaczLelektroluksDuoPower2.png';
-import telewizorFilipsEasyControl2 from '../images/telewizorFilipsEasyControl2.png';
-import telewizorKsajomiGigaScreen2 from '../images/telewizorKsajomiGigaScreen2.png';
-import telewizorFilipsUltraLight2 from '../images/telewizorFilipsUltraLight2.png';
-import głośnikJotbelPerfectSound2 from '../images/głośnikJotbelPerfectSound2.png';
-import głośnikMarszalHighVolume2 from '../images/głośnikMarszalHighVolume2.png';
-import lodówkaElgSideBySide2 from '../images/lodówkaElgSideBySide2.png';
-import lodówkaAmikaLightWhite2 from '../images/lodówkaAmikaLightWhite2.png';
-import lodówkaBekaFreshHarvest2 from '../images/lodówkaBekaFreshHarvest2.png';
-import lodówkaSzamsungMysteriousBlack2 from '../images/lodówkaSzamsungMysteriousBlack2.png';
-import lodówkaAmikaFlashInside2 from '../images/lodówkaAmikaFlashInside2.png';
-import dronGreenUfo2 from '../images/dronGreenUfo2.png';
-import dronCrazyWasp2 from '../images/dronCrazyWasp2.png';
-import kuchniaLelektroluksHotAir2 from '../images/kuchniaLelektroluksHotAir2.png';
-import kuchniaLelektroluksEasyGrill2 from '../images/kuchniaLelektroluksEasyGrill2.png';
-import kuchniaAmikaFastCook2 from '../images/kuchniaAmikaFastCook2.png';
-
-
 export const products = [
   {
     'id': 1,
@@ -51,8 +9,9 @@ export const products = [
       'AGD',
       'Do łazienki',
     ],
-    'image1': pralkaSzajsungEkstraClean,
-    'image2': pralkaSzajsungEkstraClean2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226763/wtyker/pralkaSzajsungEkstraClean_yhbumw.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226764/wtyker/pralkaSzajsungEkstraClean2_yjaxo0.webp',
+  
   },
   {
     'id': 2,
@@ -64,8 +23,8 @@ export const products = [
       'AGD',
       'Do łazienki',
     ],
-    'image1': pralkaBekaMegaPro,
-    'image2': pralkaBekaMegaPro2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226763/wtyker/pralkaBekaMegaPro_cxobvt.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226765/wtyker/pralkaBekaMegaPro2_g6oujr.webp',
   },
   {
     'id': 3,
@@ -77,8 +36,8 @@ export const products = [
       'Odkurzacze',
       'Inne',
     ],
-    'image1': odkurzaczFilipsSuperShine,
-    'image2': odkurzaczFilipsSuperShine2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226762/wtyker/odkurzaczFilipsSuperShine2_tudh9q.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226762/wtyker/odkurzaczFilipsSuperShine_ngownw.webp',
   },
   {
     'id': 4,
@@ -90,8 +49,8 @@ export const products = [
       'Odkurzacze',
       'Inne',
     ],
-    'image1': odkurzaczSzamsungHiperFlat,
-    'image2': odkurzaczSzamsungHiperFlat2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226764/wtyker/odkurzaczSzamsungHiperFlat2_rseibd.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226763/wtyker/odkurzaczSzamsungHiperFlat_cixve7.webp',
   },
   {
     'id': 5,
@@ -103,8 +62,8 @@ export const products = [
       'Odkurzacze',
       'Inne',
     ],
-    'image1': odkurzaczLelektroluksDuoPower,
-    'image2': odkurzaczLelektroluksDuoPower2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226763/wtyker/odkurzaczLelektroluksDuoPower_f7xuap.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226763/wtyker/odkurzaczLelektroluksDuoPower2_rpes1q.webp',
   },
   {
     'id': 6,
@@ -116,8 +75,8 @@ export const products = [
       'Telewizory',
       'Do salonu',
     ],
-    'image1': telewizorFilipsEasyControl,
-    'image2': telewizorFilipsEasyControl2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226765/wtyker/telewizorFilipsEasyControl_dgupvp.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226765/wtyker/telewizorFilipsEasyControl2_rxi2at.webp',
   },
   {
     'id': 7,
@@ -129,8 +88,8 @@ export const products = [
       'Telewizory',
       'Do salonu',
     ],
-    'image1': telewizorKsajomiGigaScreen,
-    'image2': telewizorKsajomiGigaScreen2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226768/wtyker/telewizorKsajomiGigaScreen_hbizoc.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/telewizorKsajomiGigaScreen2_zqiszs.webp',
   },
   {
     'id': 8,
@@ -142,8 +101,8 @@ export const products = [
       'Telewizory',
       'Do salonu',
     ],
-    'image1': telewizorFilipsUltraLight2,
-    'image2': telewizorFilipsUltraLight,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/telewizorFilipsUltraLight2_vulgi9.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226765/wtyker/telewizorFilipsUltraLight_ogzkwp.webp',
   },
   {
     'id': 9,
@@ -155,8 +114,8 @@ export const products = [
       'Sprzęt muzyczny',
       'Inne',
     ],
-    'image1': głośnikJotbelPerfectSound,
-    'image2': głośnikJotbelPerfectSound2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226758/wtyker/g%C5%82o%C5%9BnikJotbelPerfectSound_bmn9zk.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226757/wtyker/g%C5%82o%C5%9BnikJotbelPerfectSound2_s7yuxz.webp',
   },
   {
     'id': 10,
@@ -168,8 +127,8 @@ export const products = [
       'Sprzęt muzyczny',
       'Inne',
     ],
-    'image1': głośnikMarszalHighVolume,
-    'image2': głośnikMarszalHighVolume2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226758/wtyker/g%C5%82o%C5%9BnikMarszalHighVolume_eq08je.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226759/wtyker/g%C5%82o%C5%9BnikMarszalHighVolume2_pjelyg.webp',
   },
   {
     'id': 11,
@@ -181,8 +140,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': lodówkaElgSideBySide,
-    'image2': lodówkaElgSideBySide2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226761/wtyker/lod%C3%B3wkaElgSideBySide_ytvwf3.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226762/wtyker/lod%C3%B3wkaElgSideBySide2_p7te2u.webp',
   },
   {
     'id': 12,
@@ -194,8 +153,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': lodówkaAmikaLightWhite,
-    'image2': lodówkaAmikaLightWhite2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226760/wtyker/lod%C3%B3wkaAmikaLightWhite_fmnkyr.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226760/wtyker/lod%C3%B3wkaAmikaLightWhite2_zkrnq4.webp',
   },
   {
     'id': 13,
@@ -207,8 +166,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': lodówkaBekaFreshHarvest,
-    'image2': lodówkaBekaFreshHarvest2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226760/wtyker/lod%C3%B3wkaBekaFreshHarvest_gegojh.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226761/wtyker/lod%C3%B3wkaBekaFreshHarvest2_st9bzu.webp',
   },
   {
     'id': 14,
@@ -220,8 +179,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': lodówkaSzamsungMysteriousBlack,
-    'image2': lodówkaSzamsungMysteriousBlack2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226761/wtyker/lod%C3%B3wkaSzamsungMysteriousBlack_azmxhv.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226762/wtyker/lod%C3%B3wkaSzamsungMysteriousBlack2_uvqwql.webp',
   },
   {
     'id': 15,
@@ -233,8 +192,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': lodówkaAmikaFlashInside,
-    'image2': lodówkaAmikaFlashInside2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226761/wtyker/lod%C3%B3wkaAmikaFlashInside_m3aqwy.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226760/wtyker/lod%C3%B3wkaAmikaFlashInside2_uswdco.webp',
   },
   {
     'id': 16,
@@ -246,8 +205,8 @@ export const products = [
       'Wideorejestratory',
       'Inne',
     ],
-    'image1': dronGreenUfo,
-    'image2': dronGreenUfo2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226757/wtyker/dronGreenUfo_aqru5b.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226757/wtyker/dronGreenUfo2_szgygc.webp',
   },
   {
     'id': 17,
@@ -259,8 +218,8 @@ export const products = [
       'Wideorejestratory',
       'Inne',
     ],
-    'image1': dronCrazyWasp,
-    'image2': dronCrazyWasp2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226757/wtyker/dronCrazyWasp_nbhbjm.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226756/wtyker/dronCrazyWasp2_oeaafo.webp',
   },
   {
     'id': 18,
@@ -272,8 +231,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': kuchniaLelektroluksHotAir,
-    'image2': kuchniaLelektroluksHotAir2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226758/wtyker/kuchniaLelektroluksHotAir_bvpxt4.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226759/wtyker/kuchniaLelektroluksHotAir2_qjwfhr.webp',
   },
   {
     'id': 19,
@@ -285,8 +244,8 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': kuchniaLelektroluksEasyGrill,
-    'image2': kuchniaLelektroluksEasyGrill2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226759/wtyker/kuchniaLelektroluksEasyGrill_pgdise.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226762/wtyker/kuchniaLelektroluksEasyGrill2_nfasdk.webp',
   },
   {
     'id': 20,
@@ -298,7 +257,7 @@ export const products = [
       'AGD',
       'Do kuchni',
     ],
-    'image1': kuchniaAmikaFastCook,
-    'image2': kuchniaAmikaFastCook2,
+    'image1': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226758/wtyker/kuchniaAmikaFastCook_jnxdvi.webp',
+    'image2': 'https://res.cloudinary.com/dorwcwygq/image/upload/v1636226759/wtyker/kuchniaAmikaFastCook2_fftd2c.webp',
   },
 ];
