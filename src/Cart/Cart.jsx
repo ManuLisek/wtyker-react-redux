@@ -21,6 +21,9 @@ align-items: center;
 justify-content: center;
 `;
 
+const Header = styled.h2`
+color: #007065;
+`;
 
 const Table = styled.table`
 width: 100%;
@@ -199,26 +202,33 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
 
   return (
     <Container>
-      <Table>
-        <tbody>
-          {allProductsInCart}
-        </tbody>
-      </Table>
-      <OrderContainer>
-        <OrderSummary>
-          <Description>Koszt dostawy:</Description>
-          <Amount>{delivery}zł</Amount>
-        </OrderSummary>
-        <OrderSummary>
-          <Description>Wartość zamówienia:</Description>
-          <Amount>{cart.totalPrice}zł</Amount>
-        </OrderSummary>
-        <ButtonConfirm onClick={handleConfirmOrder}>Zatwierdź zamówienie</ButtonConfirm>
-        <Popup trigger={showPopup}>
-          <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
-          <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>OK</CloseBtn>
-        </Popup>
-      </OrderContainer>
+      {
+        cart.productsInCart.length != 0 
+          ? 
+          <>
+            <Table>
+              <tbody>
+                {allProductsInCart}
+              </tbody>
+            </Table>
+            <OrderContainer>
+              <OrderSummary>
+                <Description>Koszt dostawy:</Description>
+                <Amount>{delivery}zł</Amount>
+              </OrderSummary>
+              <OrderSummary>
+                <Description>Wartość zamówienia:</Description>
+                <Amount>{cart.totalPrice}zł</Amount>
+              </OrderSummary>
+              <ButtonConfirm onClick={handleConfirmOrder}>Zatwierdź zamówienie</ButtonConfirm>
+              <Popup trigger={showPopup}>
+                <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
+                <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>OK</CloseBtn>
+              </Popup>
+            </OrderContainer>
+          </>
+          : <Header>Twój koszyk jest pusty.</Header>
+      }
     </Container>
   );
 }
