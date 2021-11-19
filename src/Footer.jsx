@@ -109,12 +109,17 @@ const Footer = () => {
   }
   
   function handleEmailSent(){
-    if(!emailError){
+    if(inputValue === '') {
+      setEmailError('To pole musi być wypełnione');
+      setShowEmailError(true);
+    } 
+    else if(!emailError){
       setShowPopup(true);
       setInputValue('');
       setEmailError('');
       setShowEmailError(false);
-    } else setShowEmailError(true);
+    } else setShowEmailError(true); 
+
   }
 
   return(
