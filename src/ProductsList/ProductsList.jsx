@@ -8,15 +8,34 @@ import uuid from 'react-uuid';
 const SectionContainer = styled.section`
 width: 100%;
 display: flex;
-justify-content: center;
+@media (max-width: 560px){
+    flex-direction: column;
+    align-items: center;
+}
 `;
 
 const List = styled.ul`
 display: flex;
 flex-wrap: wrap;
-width: 880px;
+width: calc(100% - 240px);
 position: relative;
+left: 30px;
 list-style-type: none;
+/* @media (max-width: 1120px){
+    width: 660px;
+}
+@media (max-width: 900px){
+    width: 440px;
+}
+@media (max-width: 620px){
+    width: 220px;
+} */
+@media (max-width: 560px){
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+position: static;
+}
 `;
 
 

@@ -11,6 +11,13 @@ display: flex;
 justify-content: space-evenly;
 margin-top: 180px;
 padding-bottom: 40px;
+bottom: 0;
+max-height: 230px;
+@media (max-width: 840px){
+    flex-direction: column;
+    align-items: right;
+    max-height: unset;
+}
 `;
 
 const Header = styled.h3`
@@ -20,11 +27,21 @@ padding: 10px 0 10px 0;
 const Info = styled.div`
 flex-basis: 30%;
 padding: 12px;
+@media (max-width: 840px){
+    flex-basis: 100%;
+}
+/* @media (max-width: 420px){
+width: 320px;
+} */
 `;
 
 const Icons = styled.div`
 display: flex;
 align-items: center;
+@media (max-width: 420px){
+flex-direction: column;
+align-items: flex-start;
+}
 `;
 
 const Icon = styled.i`
@@ -63,7 +80,11 @@ color: white;
 border: none;
 border-radius: 5px;
 padding: 10px 20px;
-margin: 15px 15px 0 15px;
+margin-left: 20px;
+max-height: 35px;
+/* @media (max-width: 320px){
+display: block;
+} */
 `;
 
 const CloseBtn = styled.button`
@@ -82,6 +103,7 @@ const Input = styled.input`
 background-color: white;
 border: 1px solid white;
 padding: 2px;
+
 &:focus {
     border: 1px solid black;
 }
@@ -89,7 +111,23 @@ padding: 2px;
 
 const EmailError = styled.div`
 font-size: 12px;
+height: 26px;
 color: maroon;
+padding: 5px;
+`;
+
+const EmailContainer = styled.div`
+display: flex;
+justify-content: left;
+flex-wrap: wrap;
+padding: 10px 0;
+`;
+
+const InputContainer = styled.div`
+display: flex;
+flex-direction: column;
+max-width: 250px;
+padding: 5px 0;
 `;
 
 const Footer = () => {
@@ -143,9 +181,13 @@ const Footer = () => {
       <Info>
         <Header>Newsletter</Header>
         <p>Zostaw nam swojego maila żeby być na bieżąco z promocjami!</p>
-        <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail}/>
-        <ButtonNewsletter onClick={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
-        <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
+        <EmailContainer>
+          <InputContainer>
+            <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail}/>
+            <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
+          </InputContainer>
+          <ButtonNewsletter onClick={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
+        </EmailContainer>
         <Popup trigger={showPopup}>
           <h3>Teraz nie przegapisz żadnej promocji!</h3>
           <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>

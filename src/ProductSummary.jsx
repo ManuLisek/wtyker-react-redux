@@ -18,6 +18,14 @@ transition: transform 0.2s;
     transform: scale(1.06);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+@media (max-width: 700px){
+    width: 265px;
+height: 360px;
+}
+/* @media (max-width: 900px){
+width: 265px;
+height: 360px;
+} */
 `;
 const Title = styled.div`
 color: black;
@@ -43,10 +51,13 @@ padding: 5px 8px;
 margin: 3px;
 `;
 const Image = styled.img`
-width: 200px;
+width: 100%;
 height: auto;
 max-height: 200px;
 object-fit: contain;
+@media (max-width: 700px){
+width: 240px;
+}
 `;
 
 function ProductSummary(props) {

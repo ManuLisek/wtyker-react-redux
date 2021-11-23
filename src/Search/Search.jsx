@@ -5,12 +5,14 @@ import styled from 'styled-components';
 
 
 const SearchContainer = styled.div`
-/* justify-self: center;
-align-self: center; */
+    /* display: flex;
+    align-items: center;
+@media (max-width: 320px){
+    flex-direction: column;
+} */
 `;
 
 const Input = styled.input`
-margin: 5px 10px;
 background-color: inherit;
 border: none;
 border-bottom: 2px solid #007065;

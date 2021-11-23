@@ -5,24 +5,37 @@ import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
+@media (max-width: 860px){
+    flex-direction: column;
+}
 `;
 
 const SliderContainer = styled.div`
 width: 400px;
 height: 320px;
 margin-right: 20px;
+@media (max-width: 420px){
+width: 260px;
+height: 208px;
+margin-right: 0;
+}
 `;
 
 const DescriptionContainer = styled.div`
 width: 400px;
-height: 320px;
+/* height: 320px; */
 margin-left: 20px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
+@media (max-width: 420px){
+width: 90%;
+margin-left: 0;
+}
 `;
 
 const Title = styled.div`

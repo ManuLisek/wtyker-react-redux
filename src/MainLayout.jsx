@@ -8,12 +8,14 @@ import styled from 'styled-components';
 const LayoutContainer = styled.div`
 display: flex;
 flex-direction: column;
+height: 100vh;
 `;
 const Layout = styled.main`
 width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+flex: 2;
 `;
 
 const MainLayout = ({children}) => {

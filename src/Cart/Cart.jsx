@@ -6,7 +6,7 @@ import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 const Container = styled.div`
-width: 60%;
+width: 40%;
 overflow: hidden;
 /* height: 1%; */
 min-height: 340px;
@@ -19,13 +19,19 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+@media (max-width: 800px){
+width: 70%;
+}
+@media (max-width: 600px){
+width: 100%;
+}
 `;
 
 const Header = styled.h2`
 color: #007065;
 `;
 
-const Table = styled.table`
+const ItemsContainer = styled.div`
 width: 100%;
 border-spacing: 0;
 padding: 10px;
@@ -33,34 +39,35 @@ min-height: 200px;
 height: 1%;
 `;
 
-const Tr = styled.tr`
+const Item = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
 &:nth-child(even){
     background-color: #ddd;
 }
 `;
 
-const Td = styled.td`
-padding: 1%;
-`;
-
-const TotalPrice = styled(Td)`
+const TotalPrice = styled.div`
 font-weight: bold;
 color: green;
 `;
 
-const CartProduct = styled(Td)`
-text-align: left;
-margin-left: 10px;
-`;
-
 const ProductImg = styled.img`
-width: 30px;
-height: auto;
+padding: 5px;
+width: 70px;
+height: 57px;
 `;
 
 const IconTrash = styled.i`
 color: #007065;
-padding: 8px;
+padding: 5px;
+width: 70px;
+height: 57px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
 &:hover {
     cursor: pointer;
 }
@@ -72,23 +79,28 @@ background-color: plum;
 position: relative;
 font-weight: bold;
 width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: end;
+align-items: end;
 `;
 
 const OrderSummary = styled.div`
 display: flex;
-text-align: right;
 `;
 
 const Description = styled.p`
-flex: 6;
+width: 165px;
+text-align: end;
 `;
 
-const Amount = styled.p`
-flex: 2;
-margin-right: 10px;
+const Price = styled.p`
+width: 105px;
+text-align: end;
+/* margin-right: 10px; */
 `;
 
-const ButtonConfirm = styled.button`
+const ButtonConfirmOrder = styled.button`
 background-color: #007065;
 color: white;
 border: none;
@@ -100,12 +112,12 @@ margin: 20px;
 }
 `;
 
-const AmountContainer = styled.div`
+const QuantityContainer = styled.div`
 display: flex;
-min-width: 90px;
+width: 100px;
 `;
 
-const ButtonChangeAmount = styled.button`
+const ButtonChangeQuantity = styled.button`
 width: 26px;
 height: 26px;
 margin: 0 8px;
@@ -130,6 +142,47 @@ margin: 20px;
 }
 `;
 
+const ProductPriceContainer = styled.div`
+display: flex;
+width: 82px;
+`;
+
+const ProductDetails = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+`;
+
+const OrderDetails = styled.div`
+display: flex;
+justify-content: end;
+align-items: end;
+padding: 10px;
+`;
+
+const Details = styled.div`
+display: flex;
+flex-direction: column;
+align-items: start;
+`;
+
+const ProductInfo = styled.div`
+display: flex;
+flex-direction: column;
+align-items: start;
+`;
+
+const ProductTitle = styled.div`
+text-align: start;
+`;
+
+const ProductPrice = styled(ProductTitle)``;
+
+const ButtonContainer = styled.div`
+display: flex;
+width: 100%;
+justify-content: center;
+`;
 
 function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice, clearCart}) {
 
@@ -181,21 +234,38 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
-      <Tr key={uuid()}>
-        <Td><ProductImg src={productInCart.image1}/></Td>
-        <CartProduct>{productInCart.title}</CartProduct>
-        <Td>{productInCart.price}zł</Td>
-        <Td>
-          <AmountContainer>
-            <ButtonChangeAmount onClick={() => handleDecreaseQuantity(productInCart)}>-</ButtonChangeAmount>
-            {productInCart.quantity}
-            <ButtonChangeAmount onClick={() => handleIncreaseQuantity(productInCart)}>+</ButtonChangeAmount>
-          </AmountContainer>
-        </Td>
-        <TotalPrice className="cart-totalPrice">{(productInCart.quantity * productInCart.price).toFixed(2)}zł</TotalPrice>
-        <Td><IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}></IconTrash>
-        </Td>
-      </Tr>
+      <Item key={uuid()}>
+        <Details>
+          <ProductDetails>
+            <ProductImg src={productInCart.image1}/>
+            <ProductInfo>
+              <ProductTitle>
+                {productInCart.title}
+              </ProductTitle>
+              <ProductPrice>
+                {productInCart.price}zł
+              </ProductPrice>
+            </ProductInfo>
+          </ProductDetails>
+          <OrderDetails>
+            <QuantityContainer>
+              <ButtonChangeQuantity onClick={() => handleDecreaseQuantity(productInCart)}>
+                  -
+              </ButtonChangeQuantity>
+              {productInCart.quantity}
+              <ButtonChangeQuantity onClick={() => handleIncreaseQuantity(productInCart)}>
+                  +
+              </ButtonChangeQuantity>
+            </QuantityContainer>
+            <ProductPriceContainer>
+              <TotalPrice className="cart-totalPrice">
+                {(productInCart.quantity * productInCart.price).toFixed(2)}zł
+              </TotalPrice>
+            </ProductPriceContainer>
+          </OrderDetails>
+        </Details>
+        <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}/>
+      </Item>
     );
   });
 
@@ -206,24 +276,28 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
         cart.productsInCart.length != 0 
           ? 
           <>
-            <Table>
-              <tbody>
-                {allProductsInCart}
-              </tbody>
-            </Table>
+            <ItemsContainer>
+              {allProductsInCart}
+            </ItemsContainer>
             <OrderContainer>
               <OrderSummary>
                 <Description>Koszt dostawy:</Description>
-                <Amount>{delivery}zł</Amount>
+                <Price>{delivery}zł</Price>
               </OrderSummary>
               <OrderSummary>
                 <Description>Wartość zamówienia:</Description>
-                <Amount>{cart.totalPrice}zł</Amount>
+                <Price>{cart.totalPrice}zł</Price>
               </OrderSummary>
-              <ButtonConfirm onClick={handleConfirmOrder}>Zatwierdź zamówienie</ButtonConfirm>
+              <ButtonContainer>
+                <ButtonConfirmOrder onClick={handleConfirmOrder}>
+                    Zatwierdź zamówienie
+                </ButtonConfirmOrder>
+              </ButtonContainer>
               <Popup trigger={showPopup}>
                 <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
-                <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>OK</CloseBtn>
+                <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>
+                    OK
+                </CloseBtn>
               </Popup>
             </OrderContainer>
           </>

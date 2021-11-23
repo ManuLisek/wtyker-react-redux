@@ -6,7 +6,6 @@ import uuid from 'react-uuid';
 
 const FilterBarContainer = styled.div`
 background-color: white;
-padding: 5px;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 border-radius: 5px;
 display: flex;
@@ -14,10 +13,13 @@ justify-content: center;
 padding: 10px;
 width: 200px;
 height: fit-content;
-position: absolute;
 left: 0;
 top: 250px;
-margin: 20px 0 40px 0;
+margin: 20px 0 20px 0;
+@media (max-width: 560px){
+    width: 100%;
+    letter-spacing: .8px;
+}
 `;
 
 const FilterBarContent = styled.div`

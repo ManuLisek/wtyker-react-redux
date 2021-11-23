@@ -7,8 +7,8 @@ import Search from '../Search/SearchContainer';
 const NavContainer = styled.nav`
 display: flex;
 align-items: center;
-/* margin-bottom: 30px; */
-@media (max-width: 400px){
+margin-bottom: 40px;
+@media (max-width: 560px){
     flex-direction: column;
     align-items: center;
 }
@@ -17,6 +17,9 @@ align-items: center;
 const Logo = styled.img`
 height: 100px;
 margin: 30px 0 0 30px;
+@media (max-width: 560px){
+    margin: 30px;
+}
 `;
 
 const SearchIconsContainer = styled.div`
@@ -24,6 +27,9 @@ flex-grow: 1;
 display: flex;
 align-items: center;
 justify-content: center;
+@media (max-width: 320px){
+    flex-direction: column;
+}
 `;
 
 const IconCart = styled.i`
@@ -32,14 +38,16 @@ color: white;
 border: 2px solid #007065;
 border-radius: 50%;
 padding: 10px;
+margin: 15px;
 `;
 
 const QuantityInCart = styled.div`
 position: absolute;
 background-color: lightcyan;
 color: #007065;
-width: 18px;
-height: 18px;
+padding: 2px;
+min-width: 18px;
+min-height: 18px;
 border-radius: 50%;
 z-index: 1;
 text-align: center;
