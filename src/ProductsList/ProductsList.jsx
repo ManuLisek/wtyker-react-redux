@@ -38,17 +38,29 @@ position: static;
 }
 `;
 
+const NoProductsContainer = styled.div`
+text-align: center;
+margin-top: 40px;
+width: 100%;
+`;
+
 
 const ProductsList = ({products}) => {
 
   const productsList = products.map(product => (
     <ProductSummary key={uuid()} product={product} />
   ));
+
   return(
     <SectionContainer>
       <FilterBar/>
       <List>
-        {productsList}
+        {productsList.length 
+          ? productsList
+          : <NoProductsContainer>
+            <h3>Przepraszamy, nie znaleziono produktów spełniających podane kryteria.</h3>
+          </NoProductsContainer>
+        }
       </List>
     </SectionContainer>
 
