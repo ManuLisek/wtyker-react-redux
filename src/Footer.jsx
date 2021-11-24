@@ -158,7 +158,12 @@ const Footer = () => {
       setEmailError('');
       setShowEmailError(false);
     } else setShowEmailError(true); 
+  }
 
+  function handleKeyDown(e){
+    if (e.key === 'Enter') {
+      handleEmailSent();
+    }
   }
 
   return(
@@ -183,10 +188,10 @@ const Footer = () => {
         <p>Zostaw nam swojego maila żeby być na bieżąco z promocjami!</p>
         <EmailContainer>
           <InputContainer>
-            <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail}/>
+            <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail} onKeyDown={handleKeyDown}/>
             <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
           </InputContainer>
-          <ButtonNewsletter onClick={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
+          <ButtonNewsletter onSubmit={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
         </EmailContainer>
         <Popup trigger={showPopup}>
           <h3>Teraz nie przegapisz żadnej promocji!</h3>

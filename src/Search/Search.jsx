@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useLocation } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -41,9 +42,16 @@ const Search = ({changeSearchPhrase}) => {
     textInput.current.value = '';
   }
 
+  function handleKeyDown(e){
+    if (e.key === 'Enter') {
+      handleClick();
+      window.location.pathname = '/products';
+    }
+  }
+
   return(
     <SearchContainer>
-      <Input type="text" placeholder="Znajdź produkt" ref={textInput}></Input>
+      <Input type="text" placeholder="Znajdź produkt" ref={textInput} onKeyDown={handleKeyDown}></Input>
       <Link to='/products'>
         <Icon className="fas fa-search" onClick={handleClick}></Icon>
       </Link>
