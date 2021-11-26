@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -35,16 +35,20 @@ padding: 10px;
 const Search = ({changeSearchPhrase}) => {
 
   let textInput = React.createRef();
+  const history = useHistory();
 
   function handleClick(){
     changeSearchPhrase(textInput.current.value);
     textInput.current.value = '';
   }
 
+  console.log(history.location.pathname);
+
   function handleKeyDown(e){
     if (e.key === 'Enter') {
       handleClick();
-      window.location.pathname = '/products';
+      if(history.location.pathname !== '/products')
+        history.push('/products');
     }
   }
 
