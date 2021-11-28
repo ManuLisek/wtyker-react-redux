@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {useParams} from 'react-router-dom';
+import Popup from '../Popup';
 import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
-import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -85,12 +86,25 @@ const IconShoppingCart = styled.i`
 margin-left: 5px;
 `;
 
+const CloseBtn = styled.button`
+background-color: #007065;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+margin: 20px;
+&:hover {
+    cursor: pointer;
+}
+`;
+
 
 const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, countProductsInCart, countTotalPrice}) => {
 
   const { id } = useParams();
   const product = products.find(product => product.id === Number(id));
   const [itemsQuantity, setItemsQuantity] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
   const images = [
     { url: product.image1 },
     { url: product.image2 },
@@ -113,6 +127,8 @@ const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, c
       addProductToCart({...product, quantity: itemsQuantity});
       countProductsInCart(totalQuantity + itemsQuantity);
       countTotalPrice(totalPrice + (product.price * itemsQuantity));
+    } else{
+      setShowPopup(true);
     }
   }
 
@@ -141,6 +157,10 @@ const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, c
         <ButtonAddToCart onClick={handleAddProductToCart}>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
         </ButtonAddToCart>
       </DescriptionContainer>
+      <Popup trigger={showPopup}>
+        <h3>Ten produkt jest już w koszyku</h3>
+        <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>
+      </Popup>
     </Container>
   );
 };
