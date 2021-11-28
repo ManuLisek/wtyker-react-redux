@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProductInCart from '../ProductInCart/ProductInCartContainer';
 import { cartInitialState } from '../redux/store';
 import Popup from '../Popup';
 import PropTypes from 'prop-types';
@@ -40,40 +41,6 @@ min-height: 200px;
 height: 1%;
 `;
 
-const Item = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-&:nth-child(even){
-    background-color: #ddd;
-}
-`;
-
-const TotalPrice = styled.div`
-font-weight: bold;
-color: green;
-`;
-
-const ProductImg = styled.img`
-padding: 5px;
-width: 70px;
-height: 57px;
-`;
-
-const IconTrash = styled.i`
-color: #007065;
-padding: 5px;
-width: 70px;
-height: 57px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 24px;
-&:hover {
-    cursor: pointer;
-}
-`;
-
 const OrderContainer = styled.div`
 padding: 10px;
 background-color: plum;
@@ -98,7 +65,6 @@ text-align: end;
 const Price = styled.p`
 width: 105px;
 text-align: end;
-/* margin-right: 10px; */
 `;
 
 const ButtonConfirmOrder = styled.button`
@@ -112,25 +78,6 @@ margin: 20px;
     cursor: pointer;
 }
 `;
-
-const QuantityContainer = styled.div`
-display: flex;
-width: 100px;
-`;
-
-const ButtonChangeQuantity = styled.button`
-width: 26px;
-height: 26px;
-margin: 0 8px;
-color: white;
-border-radius: 50%;
-background-color: #007065;
-border: 1px solid white;
-&:hover {
-    cursor: pointer;
-}
-`;
-
 const CloseBtn = styled.button`
 background-color: #007065;
 color: white;
@@ -142,92 +89,16 @@ margin: 20px;
     cursor: pointer;
 }
 `;
-
-const ProductPriceContainer = styled.div`
-display: flex;
-width: 82px;
-`;
-
-const ProductDetails = styled.div`
-display: flex;
-justify-content: start;
-align-items: center;
-`;
-
-const OrderDetails = styled.div`
-display: flex;
-justify-content: end;
-align-items: end;
-padding: 10px;
-`;
-
-const Details = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-`;
-
-const ProductInfo = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-`;
-
-const ProductTitle = styled.div`
-text-align: start;
-`;
-
-const ProductPrice = styled(ProductTitle)``;
-
 const ButtonContainer = styled.div`
 display: flex;
 width: 100%;
 justify-content: center;
 `;
 
-function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice, clearCart}) {
+function Cart({cart, clearCart}) {
 
-  const quantityArray = cart.productsInCart.map(product => {
-    return product.quantity;
-  });
-  const totalQuantity = quantityArray.reduce((a, b) => a + b, 0);
-  const pricesArray = cart.productsInCart.map(product => {
-    return product.price * product.quantity;
-  });
-  const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
-  const totalPrice = sumOfPrices + cart.delivery;
-  const delivery = cart.delivery;
   const [showPopup, setShowPopup] = useState(false);
-
-  function handleIncreaseQuantity(product){
-    const searchedQuantity = {
-      id: product.id,
-      quantity: product.quantity + 1,
-    };
-    if((product.quantity < 9)){
-      increaseQuantityInCart(searchedQuantity);
-      countProductsInCart(totalQuantity + 1);
-      countTotalPrice(totalPrice + product.price);
-    }
-  }
-    
-  function handleDecreaseQuantity(product){
-    const searchedQuantity = {
-      id: product.id,
-      quantity: product.quantity - 1,
-    };
-    if(product.quantity > 1){
-      decreaseQuantityInCart(searchedQuantity);
-      countProductsInCart(totalQuantity - 1);
-      countTotalPrice(totalPrice - product.price);
-    }
-  }
-
-  function handleRemoveProduct(product){
-    removeProductFromCart(product);
-    countProductsInCart(totalQuantity - product.quantity);
-    countTotalPrice(totalPrice - product.price);
-  }
+  const delivery = cart.delivery;
 
   function handleConfirmOrder(){
     setShowPopup(true);
@@ -235,38 +106,7 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
-      <Item key={uuid()}>
-        <Details>
-          <ProductDetails>
-            <ProductImg src={productInCart.image1}/>
-            <ProductInfo>
-              <ProductTitle>
-                {productInCart.title}
-              </ProductTitle>
-              <ProductPrice>
-                {productInCart.price}zł
-              </ProductPrice>
-            </ProductInfo>
-          </ProductDetails>
-          <OrderDetails>
-            <QuantityContainer>
-              <ButtonChangeQuantity onClick={() => handleDecreaseQuantity(productInCart)}>
-                  -
-              </ButtonChangeQuantity>
-              {productInCart.quantity}
-              <ButtonChangeQuantity onClick={() => handleIncreaseQuantity(productInCart)}>
-                  +
-              </ButtonChangeQuantity>
-            </QuantityContainer>
-            <ProductPriceContainer>
-              <TotalPrice className="cart-totalPrice">
-                {(productInCart.quantity * productInCart.price).toFixed(2)}zł
-              </TotalPrice>
-            </ProductPriceContainer>
-          </OrderDetails>
-        </Details>
-        <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}/>
-      </Item>
+      <ProductInCart key={uuid()} productInCart={productInCart}/>
     );
   });
 
@@ -310,11 +150,6 @@ function Cart({cart, removeProductFromCart, countProductsInCart, increaseQuantit
 
 Cart.propTypes = {
   cart: PropTypes.object,
-  removeProductFromCart: PropTypes.func,
-  countProductsInCart: PropTypes.func,
-  increaseQuantityInCart: PropTypes.func,
-  decreaseQuantityInCart: PropTypes.func,
-  countTotalPrice: PropTypes.func,
   clearCart: PropTypes.func,
 };
 

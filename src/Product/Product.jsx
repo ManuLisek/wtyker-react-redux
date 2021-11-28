@@ -86,47 +86,33 @@ margin-left: 5px;
 `;
 
 
-const Product = ({cart, products, addProductToCart, countProductsInCart, countTotalPrice}) => {
+const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, countProductsInCart, countTotalPrice}) => {
 
   const { id } = useParams();
   const product = products.find(product => product.id === Number(id));
-  const [itemsAmount, setItemsAmount] = useState(1);
+  const [itemsQuantity, setItemsQuantity] = useState(1);
   const images = [
     { url: product.image1 },
     { url: product.image2 },
   ];
 
-  function handleIncreaseItemsAmount(){
-    if(itemsAmount < 9){
-      setItemsAmount(prevstate => prevstate + 1);
+  function handleIncreaseItemsQuantity(){
+    if(itemsQuantity < 9){
+      setItemsQuantity(prevstate => prevstate + 1);
     }
   }
 
-  function handleDecreaseItemsAmount(){
-    if(itemsAmount > 1){
-      setItemsAmount(prevstate => prevstate - 1);
+  function handleDecreaseItemsQuantity(){
+    if(itemsQuantity > 1){
+      setItemsQuantity(prevstate => prevstate - 1);
     }
   }
-
-  const quantityArray = cart.productsInCart.map(product => {
-    return product.quantity;
-  });
-  const totalQuantity = quantityArray.reduce((a, b) => a + b, 0) + itemsAmount;
-  const pricesArray = cart.productsInCart.map(product => {
-    return product.price * product.quantity;
-  });
-  const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
-  const totalPrice = (sumOfPrices + cart.delivery + (product.price * itemsAmount)).toFixed(2);
 
   function handleAddProductToCart(){
     if(!cart.productsInCart.some(element => element.id === product.id)){
-      const  productInCart = {
-        ...product,
-        quantity: itemsAmount,
-      };
-      addProductToCart(productInCart);
-      countProductsInCart(totalQuantity);
-      countTotalPrice(totalPrice);
+      addProductToCart({...product, quantity: itemsQuantity});
+      countProductsInCart(totalQuantity + itemsQuantity);
+      countTotalPrice(totalPrice + (product.price * itemsQuantity));
     }
   }
 
@@ -148,9 +134,9 @@ const Product = ({cart, products, addProductToCart, countProductsInCart, countTo
         <Description>{product.description}</Description>
         <AmountContainer>
           <div>Ilość:</div>
-          <ButtonChangeAmount onClick={handleDecreaseItemsAmount}>-</ButtonChangeAmount>
-          <div>{itemsAmount}</div>
-          <ButtonChangeAmount onClick={handleIncreaseItemsAmount}>+</ButtonChangeAmount>
+          <ButtonChangeAmount onClick={handleDecreaseItemsQuantity}>-</ButtonChangeAmount>
+          <div>{itemsQuantity}</div>
+          <ButtonChangeAmount onClick={handleIncreaseItemsQuantity}>+</ButtonChangeAmount>
         </AmountContainer>
         <ButtonAddToCart onClick={handleAddProductToCart}>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
         </ButtonAddToCart>
@@ -161,6 +147,8 @@ const Product = ({cart, products, addProductToCart, countProductsInCart, countTo
 
 Product.propTypes = {
   cart: PropTypes.object,
+  totalQuantity: PropTypes.number,
+  totalPrice: PropTypes.number,
   products: PropTypes.arrayOf(PropTypes.object),
   addProductToCart: PropTypes.func,
   countProductsInCart: PropTypes.func,

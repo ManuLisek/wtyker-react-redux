@@ -1,5 +1,21 @@
 /* SELECTORS */
 export const getCart = ({cart}) => cart;
+export const getTotalQuantity = ({cart}) => {
+  const quantityArray = cart.productsInCart.map(product => {
+    return product.quantity;
+  });
+  const totalQuantity = quantityArray.reduce((a, b) => a + b, 0);
+  return totalQuantity;
+};
+export const getTotalPrice = ({cart}) => {
+  const pricesArray = cart.productsInCart.map(product => {
+    return product.price * product.quantity;
+  });
+  const sumOfPrices = pricesArray.reduce((a, b) => a + b, 0);
+  const totalPrice = sumOfPrices + cart.delivery;
+  return totalPrice;
+};
+
 
 /* ACTIONS */
 
@@ -43,7 +59,7 @@ export default function reducer(statePart = [], action = {}) {
     case COUNT_PRODUCTS:
       return {
         ...statePart,
-        quantityInCart: action.payload,
+        totalQuantity: action.payload,
       };
     case INCREASE_QUANTITY:
       return {
@@ -52,7 +68,7 @@ export default function reducer(statePart = [], action = {}) {
           if(product.id === action.payload.id) {
             return {
               ...product,
-              quantity: action.payload.quantity,
+              quantity: action.payload.quantity + 1,
             };
           }
           return product;
@@ -65,7 +81,7 @@ export default function reducer(statePart = [], action = {}) {
           if(product.id === action.payload.id) {
             return {
               ...product,
-              quantity: action.payload.quantity,
+              quantity: action.payload.quantity - 1,
             };
           }
           return product;

@@ -67,7 +67,7 @@ const Navigation = ({cart}) => {
         <Search/>
         <Link to='/cart'>
           <IconCart className="fas fa-shopping-basket">
-            <QuantityInCart>{cart.quantityInCart}</QuantityInCart>
+            <QuantityInCart>{cart.totalQuantity}</QuantityInCart>
           </IconCart>
         </Link>
       </SearchIconsContainer>

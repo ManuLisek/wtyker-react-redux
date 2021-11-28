@@ -21,7 +21,7 @@ export const filtersInitialState = {
 // create initial state for cart
 export const cartInitialState = {
   productsInCart: [],
-  quantityInCart: 0,
+  totalQuantity: 0,
   totalPrice: 0,
   delivery: 20,
 };
