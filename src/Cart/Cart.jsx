@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ProductInCart from '../ProductInCart/ProductInCartContainer';
+import React, { Suspense, useState } from 'react';
 import { cartInitialState } from '../redux/store';
 import Popup from '../Popup';
 import PropTypes from 'prop-types';
@@ -97,6 +96,7 @@ justify-content: center;
 
 function Cart({cart, clearCart}) {
 
+  const ProductInCart = React.lazy(() => import('../ProductInCart/ProductInCartContainer'));
   const [showPopup, setShowPopup] = useState(false);
   const delivery = cart.delivery;
 
@@ -106,7 +106,9 @@ function Cart({cart, clearCart}) {
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
-      <ProductInCart key={uuid()} productInCart={productInCart}/>
+      <Suspense key={uuid()} fallback={<div>Ładuję...</div>}>
+        <ProductInCart key={uuid()} productInCart={productInCart}/>
+      </Suspense>
     );
   });
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import ProductSummary from '../ProductSummary';
+import React, { Suspense } from 'react';
 import FilterBar from '../FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -47,8 +46,11 @@ width: 100%;
 
 const ProductsList = ({products}) => {
 
+  const ProductSummary = React.lazy(() => import('../ProductSummary'));
   const productsList = products.map(product => (
-    <ProductSummary key={uuid()} product={product} />
+    <Suspense key={uuid()} fallback={null}>
+      <ProductSummary  product={product} />
+    </Suspense>
   ));
 
   return(
