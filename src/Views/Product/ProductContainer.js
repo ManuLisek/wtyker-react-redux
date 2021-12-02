@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import Product from '../Product/Product';
-import {getCart, getTotalQuantity, getTotalPrice, addProductToCart, countProductsInCart, countTotalPrice} from '../redux/cartRedux';
-import {getAllProducts} from '../redux/filtersRedux';
+import Product from './Product';
+import {getCart, getTotalQuantity, getTotalPrice, addProductToCart, countProductsInCart, countTotalPrice} from '../../redux/cartRedux';
+import {getAllProducts} from '../../redux/filtersRedux';
 
 const mapStateToProps = state => ({
   cart: getCart(state),

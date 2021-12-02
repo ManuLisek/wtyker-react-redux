@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import Button from '../../Components/Button';
+import RoundButton from '../../Components/RoundButton';
 import {useParams} from 'react-router-dom';
-import Popup from '../Popup';
+import Popup from '../../Components/Popup';
 import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
 import styled from 'styled-components';
@@ -62,41 +64,14 @@ margin-top: 10px;
 align-items: center;
 `;
 
-const ButtonChangeAmount = styled.button`
-width: 26px;
-height: 26px;
-margin: 0 8px;
-color: white;
-border-radius: 50%;
-background-color: #007065;
-border: 1px solid white;
-`;
-
-const ButtonAddToCart = styled.button`
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-background-color: #007065;
-border: 1px solid white;
+const ButtonContainer = styled.div`
 width: 50%;
-margin: 5px;
 `;
 
 const IconShoppingCart = styled.i`
 margin-left: 5px;
 `;
 
-const CloseBtn = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin: 20px;
-&:hover {
-    cursor: pointer;
-}
-`;
 
 
 const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, countProductsInCart, countTotalPrice}) => {
@@ -150,16 +125,17 @@ const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, c
         <Description>{product.description}</Description>
         <AmountContainer>
           <div>Ilość:</div>
-          <ButtonChangeAmount onClick={handleDecreaseItemsQuantity}>-</ButtonChangeAmount>
+          <RoundButton onClick={handleDecreaseItemsQuantity}>-</RoundButton>
           <div>{itemsQuantity}</div>
-          <ButtonChangeAmount onClick={handleIncreaseItemsQuantity}>+</ButtonChangeAmount>
+          <RoundButton onClick={handleIncreaseItemsQuantity}>+</RoundButton>
         </AmountContainer>
-        <ButtonAddToCart onClick={handleAddProductToCart}>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
-        </ButtonAddToCart>
+        <ButtonContainer>
+          <Button onClick={handleAddProductToCart}>Dodaj do koszyka<IconShoppingCart className="fas fa-shopping-cart"></IconShoppingCart>
+          </Button>
+        </ButtonContainer>
       </DescriptionContainer>
-      <Popup trigger={showPopup}>
+      <Popup trigger={showPopup} closePopup={()=> setShowPopup(false)}>
         <h3>Ten produkt jest już w koszyku</h3>
-        <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>
       </Popup>
     </Container>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -26,21 +27,33 @@ background-color: #fff;
 border-radius: 5px;
 `;
 
-function Popup (props) {
-  const {trigger, children} = props;
+const ButtonContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`;
+
+const Popup = (props) => {
+  const {trigger, children, closePopup} = props;
 
   return (trigger) ? (
     <PopupContainer>
       <PopupInner>
         {children}
+        <ButtonContainer>
+          <Button onClick={closePopup}>
+            Ok
+          </Button>
+        </ButtonContainer>
       </PopupInner>
     </PopupContainer>
   ) : '';
-}
+};
 
 Popup.propTypes = {
   trigger: PropTypes.bool,
   children: PropTypes.node,
+  closePopup: PropTypes.func,
 };
 
 export default Popup;

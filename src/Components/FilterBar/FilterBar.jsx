@@ -1,5 +1,6 @@
 import React from 'react';
-import { filtersInitialState } from '../redux/store';
+import Button from '../Button';
+import { filtersInitialState } from '../../redux/store';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
@@ -36,16 +37,6 @@ const Checkbox = styled.input`
 margin-right: 3px;
 `;
 
-const ButtonClear = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin: 20px;
-display: block;
-`;
-
 const InputPrice = styled.input`
 max-width: 50px;
 text-align: right;
@@ -53,7 +44,7 @@ margin: 0 4px 0 4px;
 `;
 
 
-function FilterBar({products, filters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters}) {
+const FilterBar = ({products, filters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters}) => {
 
   const allTags = [];
   const allBrands = [];
@@ -105,7 +96,7 @@ function FilterBar({products, filters, changePrice, addTag, removeTag, addBrand,
         </Label>
         <Label>
                 od:
-          <InputPrice type='number'  min='50' max='3400' value={filters.price.from} onChange={event => handlePrice('from', event.currentTarget.value)}/>
+          <InputPrice type='number' min='50' max='3400' value={filters.price.from} onChange={event => handlePrice('from', event.currentTarget.value)}/>
         zł
         </Label>
         <Label>
@@ -142,11 +133,11 @@ function FilterBar({products, filters, changePrice, addTag, removeTag, addBrand,
           <option>Po cenie: rosnąco</option>
           <option>Po cenie: malejąco</option>
         </select>
-        <ButtonClear onClick={handleClearFilters}>Wyczyść</ButtonClear>
+        <Button onClick={handleClearFilters}>Wyczyść</Button>
       </FilterBarContent>
     </FilterBarContainer>
   );
-}
+};
 
 FilterBar.propTypes = {
   products: PropTypes.array,

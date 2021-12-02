@@ -39,6 +39,10 @@ border: 2px solid #007065;
 border-radius: 50%;
 padding: 10px;
 margin: 15px;
+&:hover {
+    background-color: #118176;
+    border-color: #118176;
+}
 `;
 
 const QuantityInCart = styled.div`

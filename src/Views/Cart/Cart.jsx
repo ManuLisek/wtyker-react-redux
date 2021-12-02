@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from 'react';
-import { cartInitialState } from '../redux/store';
-import Popup from '../Popup';
+import Button from '../../Components/Button';
+import { cartInitialState } from '../../redux/store';
+import Popup from '../../Components/Popup';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -9,7 +10,7 @@ const Container = styled.div`
 width: 40%;
 overflow: hidden;
 /* height: 1%; */
-min-height: 330px;
+min-height: 315px;
 background-color: white;
 color: black;
 border-radius: 10px;
@@ -66,37 +67,15 @@ width: 105px;
 text-align: end;
 `;
 
-const ButtonConfirmOrder = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin: 20px;
-&:hover {
-    cursor: pointer;
-}
-`;
-const CloseBtn = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin: 20px;
-&:hover {
-    cursor: pointer;
-}
-`;
 const ButtonContainer = styled.div`
 display: flex;
 width: 100%;
 justify-content: center;
 `;
 
-function Cart({cart, clearCart}) {
+const Cart = ({cart, clearCart}) => {
 
-  const ProductInCart = React.lazy(() => import('../ProductInCart/ProductInCartContainer'));
+  const ProductInCart = React.lazy(() => import('../../Components/ProductInCart/ProductInCartContainer'));
   const [showPopup, setShowPopup] = useState(false);
   const delivery = cart.delivery;
 
@@ -132,15 +111,12 @@ function Cart({cart, clearCart}) {
                 <Price>{cart.totalPrice}zł</Price>
               </OrderSummary>
               <ButtonContainer>
-                <ButtonConfirmOrder onClick={handleConfirmOrder}>
+                <Button onClick={handleConfirmOrder}>
                     Zatwierdź zamówienie
-                </ButtonConfirmOrder>
+                </Button>
               </ButtonContainer>
-              <Popup trigger={showPopup}>
+              <Popup trigger={showPopup} closePopup={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>
                 <h3>Twoje zamówienie zostało przekazane do działu obsługi klienta.</h3>
-                <CloseBtn onClick={()=>{ setShowPopup(false); clearCart(cartInitialState); }}>
-                    OK
-                </CloseBtn>
               </Popup>
             </OrderContainer>
           </>
@@ -148,7 +124,7 @@ function Cart({cart, clearCart}) {
       }
     </Container>
   );
-}
+};
 
 Cart.propTypes = {
   cart: PropTypes.object,

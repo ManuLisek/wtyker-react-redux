@@ -1,4 +1,5 @@
 import React from 'react';
+import RoundButton from '../RoundButton';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -42,18 +43,6 @@ display: flex;
 width: 100px;
 `;
 
-const ButtonChangeQuantity = styled.button`
-width: 26px;
-height: 26px;
-margin: 0 8px;
-color: white;
-border-radius: 50%;
-background-color: #007065;
-border: 1px solid white;
-&:hover {
-    cursor: pointer;
-}
-`;
 const ProductPriceContainer = styled.div`
 display: flex;
 width: 82px;
@@ -91,7 +80,7 @@ text-align: start;
 const ProductPrice = styled(ProductTitle)``;
 
 
-function ProductInCart({productInCart, totalQuantity, totalPrice, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) {  
+const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) => {  
   
   function handleIncreaseQuantity(){
     if((productInCart.quantity < 9)){
@@ -132,13 +121,13 @@ function ProductInCart({productInCart, totalQuantity, totalPrice, removeProductF
         </ProductDetails>
         <OrderDetails>
           <QuantityContainer>
-            <ButtonChangeQuantity onClick={() => handleDecreaseQuantity(productInCart)}>
+            <RoundButton onClick={() => handleDecreaseQuantity(productInCart)}>
                 -
-            </ButtonChangeQuantity>
+            </RoundButton>
             {productInCart.quantity}
-            <ButtonChangeQuantity onClick={() => handleIncreaseQuantity(productInCart)}>
+            <RoundButton onClick={() => handleIncreaseQuantity(productInCart)}>
                 +
-            </ButtonChangeQuantity>
+            </RoundButton>
           </QuantityContainer>
           <ProductPriceContainer>
             <TotalPrice className="cart-totalPrice">
@@ -150,7 +139,7 @@ function ProductInCart({productInCart, totalQuantity, totalPrice, removeProductF
       <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}/>
     </Item>
   );
-}
+};
 
 ProductInCart.propTypes = {
   productInCart: PropTypes.object,

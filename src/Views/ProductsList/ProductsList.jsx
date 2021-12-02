@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import FilterBar from '../FilterBar/FilterBarContainer';
+import FilterBar from '../../Components/FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
@@ -20,15 +20,6 @@ width: calc(100% - 240px);
 position: relative;
 left: 30px;
 list-style-type: none;
-/* @media (max-width: 1120px){
-    width: 660px;
-}
-@media (max-width: 900px){
-    width: 440px;
-}
-@media (max-width: 620px){
-    width: 220px;
-} */
 @media (max-width: 560px){
     align-items: center;
     flex-direction: column;
@@ -46,7 +37,7 @@ width: 100%;
 
 const ProductsList = ({products}) => {
 
-  const ProductSummary = React.lazy(() => import('../ProductSummary'));
+  const ProductSummary = React.lazy(() => import('../../Components/ProductSummary'));
   const productsList = products.map(product => (
     <Suspense key={uuid()} fallback={null}>
       <ProductSummary  product={product} />

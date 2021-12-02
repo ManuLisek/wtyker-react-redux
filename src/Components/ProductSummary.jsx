@@ -22,10 +22,6 @@ transition: transform 0.2s;
     width: 265px;
 height: 360px;
 }
-/* @media (max-width: 900px){
-width: 265px;
-height: 360px;
-} */
 `;
 const Title = styled.div`
 color: black;
@@ -60,7 +56,7 @@ width: 240px;
 }
 `;
 
-function ProductSummary(props) {
+const ProductSummary = (props) => {
 
   const { product } = props;
   const tags = product.tags.map(tag => {
@@ -84,7 +80,7 @@ function ProductSummary(props) {
       </Container>
     </Link>
   );
-}
+};
 
 ProductSummary.propTypes = {
   product: PropTypes.object,

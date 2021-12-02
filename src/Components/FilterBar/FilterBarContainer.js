@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import FilterBar from '../FilterBar/FilterBar';
-import {getAllProducts, getAllFilters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters} from '../redux/filtersRedux';
+import FilterBar from './FilterBar';
+import {getAllProducts, getAllFilters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters} from '../../redux/filtersRedux';
 
 const mapStateToProps = state => ({
   products: getAllProducts(state),

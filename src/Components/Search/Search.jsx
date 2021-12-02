@@ -5,11 +5,7 @@ import styled from 'styled-components';
 
 
 const SearchContainer = styled.div`
-    /* display: flex;
-    align-items: center;
-@media (max-width: 320px){
-    flex-direction: column;
-} */
+text-align: center;
 `;
 
 const Input = styled.input`
@@ -22,12 +18,15 @@ outline: none;
     border-bottom: none;
 }
 `;
-const Icon = styled.i`
+const IconSearch = styled.i`
 margin: 5px 10px;
 border: 2px solid #007065;
 color: #007065;
 border-radius: 50%;
 padding: 10px;
+&:hover {
+    border-color: #118176;
+}
 `;
 
 
@@ -56,7 +55,7 @@ const Search = ({changeSearchPhrase}) => {
     <SearchContainer>
       <Input type="text" placeholder="Znajdź produkt" ref={textInput} onKeyDown={handleKeyDown}></Input>
       <Link to='/products'>
-        <Icon className="fas fa-search" onClick={handleClick}></Icon>
+        <IconSearch className="fas fa-search" onClick={handleClick}></IconSearch>
       </Link>
     </SearchContainer>
   );

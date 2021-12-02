@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from './Button';
 import styled from 'styled-components';
 import Popup from './Popup';
 import validator from 'validator';
@@ -12,7 +13,7 @@ justify-content: space-evenly;
 margin-top: 180px;
 padding-bottom: 40px;
 bottom: 0;
-max-height: 230px;
+max-height: 280px;
 @media (max-width: 840px){
     flex-direction: column;
     align-items: right;
@@ -74,36 +75,41 @@ const IconDescription = styled.p`
 margin-right: 15px;
 `;
 
-const ButtonNewsletter = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin-left: 20px;
-max-height: 35px;
-/* @media (max-width: 320px){
-display: block;
-} */
-`;
+// const ButtonNewsletter = styled.button`
+// background-color: #007065;
+// color: white;
+// border: none;
+// border-radius: 5px;
+// padding: 10px 20px;
+// margin-left: 20px;
+// max-height: 35px;
+// /* @media (max-width: 320px){
+// display: block;
+// } */
+// `;
 
-const CloseBtn = styled.button`
-background-color: #007065;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin: 20px;
-&:hover {
-    cursor: pointer;
-}
+// const CloseBtn = styled.button`
+// background-color: #007065;
+// color: white;
+// border: none;
+// border-radius: 5px;
+// padding: 10px 20px;
+// margin: 20px;
+// &:hover {
+//     cursor: pointer;
+// }
+// `;
+
+const ButtonContainer = styled.div`
+/* padding: 10px 20px; */
+margin-left: 20px;
 `;
 
 const Input = styled.input`
 background-color: white;
 border: 1px solid white;
 padding: 2px;
-
+margin-top: 16px;
 &:focus {
     border: 1px solid black;
 }
@@ -191,11 +197,12 @@ const Footer = () => {
             <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail} onKeyDown={handleKeyDown}/>
             <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
           </InputContainer>
-          <ButtonNewsletter onSubmit={() => handleEmailSent()}>Wyślij</ButtonNewsletter>
+          <ButtonContainer>
+            <Button onClick={() => handleEmailSent()}>Wyślij</Button>
+          </ButtonContainer>
         </EmailContainer>
-        <Popup trigger={showPopup}>
+        <Popup trigger={showPopup} closePopup={()=> setShowPopup(false)}>
           <h3>Teraz nie przegapisz żadnej promocji!</h3>
-          <CloseBtn onClick={()=>{ setShowPopup(false);}}>OK</CloseBtn>
         </Popup>
       </Info>
     </FooterContainer>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Components/Button';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -52,23 +53,13 @@ const Logo = styled.img`
     @media (max-width: 720px){
     width: 150px;
 }
-@media (max-height: 5600px){
+@media (max-height: 560px){
     width: 140px;
 }
 `;
 
-const Button = styled.div`
-background-color: #007065;
-border: none;
-font-weight: bold;
-color: white;
-padding: 10px 15px;
-border-radius: 5px;
-margin-top: 12px;
-`;
 
-
-function Home() {
+const Home = () => {
   return (
     <Container>
       <ImageContainer>
@@ -84,6 +75,6 @@ function Home() {
       </IntroContainer>
     </Container>
   );
-}
+};
 
 export default Home;

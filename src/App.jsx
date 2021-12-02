@@ -1,12 +1,12 @@
 import React from 'react';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-import Home from './Home';
-import ProductsList from './ProductsList/ProductsListContainer';
-import Product from './Product/ProductContainer';
-import Cart from './Cart/CartContainer';
-import MainLayout from './MainLayout';
-import NotFound from './NotFound';
-import ScrollToTop from './ScrollToTop';
+import Home from './Views/Home';
+import ProductsList from './Views/ProductsList/ProductsListContainer';
+import Product from './Views/Product/ProductContainer';
+import Cart from './Views/Cart/CartContainer';
+import MainLayout from './Components/MainLayout';
+import NotFound from './Views/NotFound';
+import ScrollToTop from './utilities/ScrollToTop';
 
 function App() {
 
