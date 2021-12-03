@@ -23,17 +23,22 @@ const MainLayout = ({children}) => {
   const location = useLocation();
 
   return(
-    <LayoutContainer>
-      <Navigation/>
-      <Layout>
-        {children}
-      </Layout>
-      {
-        location.pathname != '/'
-          ? <Footer />
-          : ''
-      }
-    </LayoutContainer>
+    location.pathname != '/'
+      ?     
+      <LayoutContainer>
+        <Navigation/>
+        <Layout>
+          {children}
+        </Layout>
+        <Footer/>
+      </LayoutContainer>
+      :     
+      <LayoutContainer>
+        <Layout>
+          {children}
+        </Layout>
+      </LayoutContainer>
+
   );
 };
 

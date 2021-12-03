@@ -3,12 +3,13 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Search from '../Search/SearchContainer';
+import size from '../../styles/breakpoints';
 
 const NavContainer = styled.nav`
 display: flex;
 align-items: center;
 margin-bottom: 40px;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     flex-direction: column;
     align-items: center;
 }
@@ -17,7 +18,7 @@ margin-bottom: 40px;
 const Logo = styled.img`
 height: 100px;
 margin: 30px 0 0 30px;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     margin: 30px;
 }
 `;
@@ -27,7 +28,7 @@ flex-grow: 1;
 display: flex;
 align-items: center;
 justify-content: center;
-@media (max-width: 320px){
+@media (max-width: ${size.sm}){
     flex-direction: column;
 }
 `;

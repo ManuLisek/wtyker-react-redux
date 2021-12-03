@@ -2,15 +2,16 @@ import React from 'react';
 import Button from '../Components/Button';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import size from '../styles/breakpoints';
+
 
 const Container = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-padding-bottom: 10%;
-@media (max-width: 560px){
-flex-direction: column;
+@media (max-width: ${size.md}){
+    flex-direction: column;
 }
 `;
 
@@ -20,7 +21,7 @@ flex-direction: column;
 align-items: flex-end;
 justify-content: center;
 width: 55%;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     align-items: center;
     width: 50%;
 }
@@ -29,7 +30,7 @@ width: 55%;
 const Image = styled.img`
 width: 400px;
 height: auto;
-@media (max-width: 720px){
+@media (max-width: ${size.lg}){
     width: 280px;
 }
 `;
@@ -40,7 +41,7 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: center;
 width: 45%;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     align-items: center;
     text-align: center;
     width: 50%;
@@ -50,10 +51,10 @@ width: 45%;
 const Logo = styled.img`
     width: 200px;
     height: auto;
-    @media (max-width: 720px){
+@media (max-width: ${size.lg}){
     width: 150px;
 }
-@media (max-height: 560px){
+@media (max-height: ${size.md}){
     width: 140px;
 }
 `;

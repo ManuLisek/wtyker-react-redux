@@ -6,13 +6,14 @@ import Popup from '../../Components/Popup';
 import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
 import styled from 'styled-components';
+import size from '../../styles/breakpoints';
 
 const Container = styled.div`
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-@media (max-width: 860px){
+@media (max-width: ${size.lg}){
     flex-direction: column;
 }
 `;
@@ -21,23 +22,23 @@ const SliderContainer = styled.div`
 width: 400px;
 height: 320px;
 margin-right: 20px;
-@media (max-width: 420px){
-width: 260px;
-height: 208px;
-margin-right: 0;
+@media (max-width: ${size.md}){
+    width: 260px;
+    height: 208px;
+    margin-right: 0;
 }
 `;
 
 const DescriptionContainer = styled.div`
 width: 400px;
-/* height: 320px; */
-margin-left: 20px;
+margin-left: 10px;
+margin-right: 15px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-@media (max-width: 420px){
-width: 90%;
-margin-left: 0;
+@media (max-width: ${size.md}){
+    width: 90%;
+    margin: 0;
 }
 `;
 

@@ -18,6 +18,7 @@ outline: none;
     border-bottom: none;
 }
 `;
+
 const IconSearch = styled.i`
 margin: 5px 10px;
 border: 2px solid #007065;
@@ -40,8 +41,6 @@ const Search = ({changeSearchPhrase}) => {
     changeSearchPhrase(textInput.current.value);
     textInput.current.value = '';
   }
-
-  console.log(history.location.pathname);
 
   function handleKeyDown(e){
     if (e.key === 'Enter') {

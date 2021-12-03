@@ -4,6 +4,7 @@ import { filtersInitialState } from '../../redux/store';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
+import size from '../../styles/breakpoints';
 
 const FilterBarContainer = styled.div`
 background-color: white;
@@ -17,7 +18,7 @@ height: fit-content;
 left: 0;
 top: 250px;
 margin: 20px 0 20px 0;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     width: 100%;
     letter-spacing: .8px;
 }

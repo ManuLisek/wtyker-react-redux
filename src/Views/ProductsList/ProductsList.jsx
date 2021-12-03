@@ -3,11 +3,12 @@ import FilterBar from '../../Components/FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
+import size from '../../styles/breakpoints';
 
 const SectionContainer = styled.section`
 width: 100%;
 display: flex;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     flex-direction: column;
     align-items: center;
 }
@@ -20,7 +21,7 @@ width: calc(100% - 240px);
 position: relative;
 left: 30px;
 list-style-type: none;
-@media (max-width: 560px){
+@media (max-width: ${size.md}){
     align-items: center;
     flex-direction: column;
     width: 100%;

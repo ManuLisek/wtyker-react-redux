@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import size from '../styles/breakpoints';
 
 const Container = styled.div`
 display: flex;
@@ -18,9 +19,9 @@ transition: transform 0.2s;
     transform: scale(1.06);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-@media (max-width: 700px){
+@media (max-width: ${size.lg}){
     width: 265px;
-height: 360px;
+    height: 360px;
 }
 `;
 const Title = styled.div`
@@ -51,8 +52,8 @@ width: 100%;
 height: auto;
 max-height: 200px;
 object-fit: contain;
-@media (max-width: 700px){
-width: 240px;
+@media (max-width: ${size.lg}){
+    width: 240px;
 }
 `;
 

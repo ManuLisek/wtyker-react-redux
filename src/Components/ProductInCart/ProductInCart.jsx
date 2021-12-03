@@ -33,8 +33,9 @@ display: flex;
 align-items: center;
 justify-content: center;
 font-size: 24px;
+cursor: pointer;
 &:hover {
-    cursor: pointer;
+    color: #118176;
 }
 `;
 
@@ -75,6 +76,7 @@ align-items: start;
 
 const ProductTitle = styled.div`
 text-align: start;
+font-weight: 500;
 `;
 
 const ProductPrice = styled(ProductTitle)``;
@@ -124,7 +126,7 @@ const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductF
             <RoundButton onClick={() => handleDecreaseQuantity(productInCart)}>
                 -
             </RoundButton>
-            {productInCart.quantity}
+            <div>{productInCart.quantity}</div>
             <RoundButton onClick={() => handleIncreaseQuantity(productInCart)}>
                 +
             </RoundButton>

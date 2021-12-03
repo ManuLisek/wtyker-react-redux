@@ -5,11 +5,11 @@ import Popup from '../../Components/Popup';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import size from '../../styles/breakpoints';
 
 const Container = styled.div`
 width: 40%;
 overflow: hidden;
-/* height: 1%; */
 min-height: 315px;
 background-color: white;
 color: black;
@@ -21,11 +21,11 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-@media (max-width: 800px){
-width: 70%;
+@media (max-width: ${size.lg}){
+    width: 70%;
 }
-@media (max-width: 600px){
-width: 100%;
+@media (max-width: ${size.md}){
+    width: 100%;
 }
 `;
 
@@ -85,7 +85,7 @@ const Cart = ({cart, clearCart}) => {
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
-      <Suspense key={uuid()} fallback={<div>Ładuję...</div>}>
+      <Suspense key={uuid()} fallback={null}>
         <ProductInCart key={uuid()} productInCart={productInCart}/>
       </Suspense>
     );
