@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 import size from '../../styles/breakpoints';
+import colors from '../../styles/colors';
 
 const Container = styled.div`
 width: 40%;
 overflow: hidden;
 min-height: 315px;
-background-color: white;
-color: black;
+background-color: ${colors.white};
+color: ${colors.black};
 border-radius: 10px;
 text-align: center;
 border: none;
@@ -20,7 +21,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+box-shadow: ${colors.shadow};
 @media (max-width: ${size.lg}){
     width: 70%;
 }
@@ -30,20 +31,18 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 const Header = styled.h2`
-color: #007065;
+color: ${colors.secondary};
 `;
 
 const ItemsContainer = styled.div`
 width: 100%;
-border-spacing: 0;
 padding: 10px;
 min-height: 200px;
-height: 1%;
 `;
 
 const OrderContainer = styled.div`
 padding: 10px;
-background-color: plum;
+background-color: ${colors.plum};
 position: relative;
 font-weight: bold;
 width: 100%;
@@ -77,8 +76,7 @@ const Cart = ({cart, clearCart}) => {
 
   const ProductInCart = React.lazy(() => import('../../Components/ProductInCart/ProductInCartContainer'));
   const [showPopup, setShowPopup] = useState(false);
-  const delivery = cart.delivery;
-
+ 
   function handleConfirmOrder(){
     setShowPopup(true);
   }
@@ -90,7 +88,6 @@ const Cart = ({cart, clearCart}) => {
       </Suspense>
     );
   });
-
 
   return (
     <Container>
@@ -104,7 +101,7 @@ const Cart = ({cart, clearCart}) => {
             <OrderContainer>
               <OrderSummary>
                 <Description>Koszt dostawy:</Description>
-                <Price>{delivery}zł</Price>
+                <Price>{cart.delivery}zł</Price>
               </OrderSummary>
               <OrderSummary>
                 <Description>Wartość zamówienia:</Description>

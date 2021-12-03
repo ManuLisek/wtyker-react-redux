@@ -1,7 +1,26 @@
 /* SELECTORS */
-
 export const getAllProducts = ({products}) => products;
 export const getAllFilters = ({filters}) => filters;
+export const getAllTags = ({products}) => {
+  const allTags = [];
+    
+  products.forEach(product => {
+    allTags.push(...product.tags);
+  });
+    
+  const tags = [...new Set(allTags)];
+  return tags;
+};
+export const getAllBrands = ({products}) => {
+  const allBrands = [];
+  
+  products.forEach(product => {
+    allBrands.push(product.brand);
+  });
+  
+  const brands = [...new Set(allBrands)];
+  return brands;
+};
 
 // action name creator
 const reducerName = 'filters';
@@ -73,5 +92,4 @@ export default function reducer(statePart = [], action = {}) {
     default:
       return statePart;
   }
-  
 }

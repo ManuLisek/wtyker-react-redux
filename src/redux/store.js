@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage';
 import filtersReducer from './filtersRedux';
 import cartReducer from './cartRedux';
 
-
 // create initial state for filters
 export const filtersInitialState = {
   searchPhrase: '',

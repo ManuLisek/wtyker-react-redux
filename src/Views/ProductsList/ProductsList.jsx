@@ -35,7 +35,6 @@ margin-top: 40px;
 width: 100%;
 `;
 
-
 const ProductsList = ({products}) => {
 
   const ProductSummary = React.lazy(() => import('../../Components/ProductSummary'));

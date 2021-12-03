@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import size from '../styles/breakpoints';
 
-
 const Container = styled.div`
 display: flex;
 justify-content: center;
@@ -58,7 +57,6 @@ const Logo = styled.img`
     width: 140px;
 }
 `;
-
 
 const Home = () => {
   return (

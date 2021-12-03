@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import colors from '../../styles/colors';
 
 const SearchContainer = styled.div`
 text-align: center;
@@ -11,26 +11,24 @@ text-align: center;
 const Input = styled.input`
 background-color: inherit;
 border: none;
-border-bottom: 2px solid #007065;
+border-bottom: 2px solid ${colors.secondary};
 outline: none;
 &:focus {
-    background-color: white;
+    background-color: ${colors.white};
     border-bottom: none;
 }
 `;
 
 const IconSearch = styled.i`
 margin: 5px 10px;
-border: 2px solid #007065;
-color: #007065;
+border: 2px solid ${colors.secondary};
+color: ${colors.secondary};
 border-radius: 50%;
 padding: 10px;
 &:hover {
-    border-color: #118176;
+    border-color: ${colors.secondaryHovered};
 }
 `;
-
-
 
 const Search = ({changeSearchPhrase}) => {
 

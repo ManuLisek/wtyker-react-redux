@@ -16,7 +16,6 @@ export const getTotalPrice = ({cart}) => {
   return totalPrice;
 };
 
-
 /* ACTIONS */
 
 // action name creator
@@ -32,7 +31,6 @@ export const DECREASE_QUANTITY = createActionName('DECREASE_QUANTITY');
 export const COUNT_PRICE = createActionName('COUNT_PRICE');
 export const CLEAR_CART = createActionName('CLEAR_CART');
 
-
 // action creators
 export const addProductToCart = payload => ({payload, type: ADD_PRODUCT});
 export const removeProductFromCart = payload => ({payload, type: REMOVE_PRODUCT});
@@ -41,7 +39,6 @@ export const increaseQuantityInCart = payload => ({payload, type: INCREASE_QUANT
 export const decreaseQuantityInCart = payload => ({payload, type: DECREASE_QUANTITY});
 export const countTotalPrice = payload => ({payload, type: COUNT_PRICE});
 export const clearCart = payload => ({payload, type: CLEAR_CART});
-
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -100,5 +97,4 @@ export default function reducer(statePart = [], action = {}) {
     default:
       return statePart;
   }
-  
 }

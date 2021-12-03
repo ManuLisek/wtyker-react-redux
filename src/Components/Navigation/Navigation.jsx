@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Search from '../Search/SearchContainer';
 import size from '../../styles/breakpoints';
+import colors from '../../styles/colors';
 
 const NavContainer = styled.nav`
 display: flex;
@@ -23,7 +24,7 @@ margin: 30px 0 0 30px;
 }
 `;
 
-const SearchIconsContainer = styled.div`
+const IconsContainer = styled.div`
 flex-grow: 1;
 display: flex;
 align-items: center;
@@ -34,22 +35,22 @@ justify-content: center;
 `;
 
 const IconCart = styled.i`
-background-color: #007065;
+background-color: ${colors.secondary};
 color: white;
-border: 2px solid #007065;
+border: 2px solid ${colors.secondary};
 border-radius: 50%;
 padding: 10px;
 margin: 15px;
 &:hover {
-    background-color: #118176;
-    border-color: #118176;
+    background-color: ${colors.secondaryHovered};
+    border-color: ${colors.secondaryHovered};
 }
 `;
 
 const QuantityInCart = styled.div`
 position: absolute;
-background-color: lightcyan;
-color: #007065;
+background-color: ${colors.lightcyan};
+color: ${colors.secondary};
 padding: 2px;
 min-width: 18px;
 min-height: 18px;
@@ -59,7 +60,6 @@ text-align: center;
 transform: translate(50%, 10%);
 `;
 
-
 const Navigation = ({cart}) => {
   return(
     <NavContainer>
@@ -68,14 +68,14 @@ const Navigation = ({cart}) => {
           <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_vt9mu8.png' width="60" height="100" alt="logo"/>
         </Link>
       </div>
-      <SearchIconsContainer>
+      <IconsContainer>
         <Search/>
         <Link to='/cart'>
           <IconCart className="fas fa-shopping-basket">
             <QuantityInCart>{cart.totalQuantity}</QuantityInCart>
           </IconCart>
         </Link>
-      </SearchIconsContainer>
+      </IconsContainer>
     </NavContainer>
   );};
 

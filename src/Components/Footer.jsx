@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import Popup from './Popup';
 import validator from 'validator';
 import size from '../styles/breakpoints';
+import colors from '../styles/colors';
 
 const FooterContainer = styled.footer`
-background-color: #5f6670;
-color: white;
+background-color: ${colors.dark};
+color: ${colors.white};
 flex-basis: 100%;
 display: flex;
 justify-content: space-evenly;
@@ -42,7 +43,7 @@ align-items: flex-start;
 const Icon = styled.i`
 min-height: 30px;
 min-width: 30px;
-background-color: white;
+background-color: ${colors.white};
 border-radius: 5px;
 line-height: 30px;
 text-align: center;
@@ -51,18 +52,18 @@ margin: 10px 8px 10px 0;
 `;
 
 const Facebook = styled(Icon)`
-background-color: #3b5998;
-color: white;
+background-color: ${colors.facebook};
+color: ${colors.white};
 `;
 
 const Youtube = styled(Icon)`
-background-color: #c4302b;
-color: white;
+background-color: ${colors.youtube};
+color: ${colors.white};
 font-size: 10px;
 `;
 
 const Twitter = styled(Icon)`
-background-color: #00acee;
+background-color: ${colors.twitter};
 `;
 
 const MediaContainer = styled.div`
@@ -79,19 +80,19 @@ margin-left: 20px;
 `;
 
 const Input = styled.input`
-background-color: white;
-border: 1px solid white;
+background-color: ${colors.white};
+border: 1px solid ${colors.white};
 padding: 2px;
 margin-top: 16px;
 &:focus {
-    border: 1px solid black;
+    border: 1px solid ${colors.black};
 }
 `;
 
 const EmailError = styled.div`
 font-size: 12px;
 height: 26px;
-color: maroon;
+color: ${colors.maroon};
 padding: 5px;
 `;
 

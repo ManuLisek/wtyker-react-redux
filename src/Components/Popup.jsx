@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './Button';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import colors from '../styles/colors';
 
 const PopupContainer = styled.div`
 position: fixed;
@@ -10,7 +11,7 @@ left: 0;
 width: 100%;
 height: 100vh;
 background-color: rgba(0, 0, 0, 0.2);
-color: #007065;
+color: ${colors.secondary};
 display: flex;
 justify-content: center;
 align-items: center;
@@ -23,7 +24,7 @@ position: relative;
 padding: 32px;
 width: 100%;
 max-width: 640px;
-background-color: #fff;
+background-color: ${colors.white};
 border-radius: 5px;
 `;
 

@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import colors from '../styles/colors';
 
 const ButtonContainer = styled.div`
-background-color: #007065;
+background-color: ${colors.secondary};
 border: none;
 font-weight: bold;
 text-align: center;
-color: white;
+color: ${colors.white};
 padding: 10px 15px;
 border-radius: 5px;
 margin-top: 12px;
 cursor: pointer;
 min-width: 100px;
 &:hover {
-    background-color: #118176;
+    background-color: ${colors.secondaryHovered};
 }
 `;
 

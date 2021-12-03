@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import SimpleImageSlider from 'react-simple-image-slider';
 import styled from 'styled-components';
 import size from '../../styles/breakpoints';
+import colors from '../../styles/colors';
 
 const Container = styled.div`
 width: 100%;
@@ -43,19 +44,19 @@ justify-content: flex-start;
 `;
 
 const Title = styled.div`
-color: #007065;
+color: ${colors.secondary};
 font-size: 32px;
 font-weight: bold;
 `;
 
 const Price = styled.div`
-color: green;
+color: ${colors.green};
 font-weight: bold;
 font-size: 24px;
 `;
 
 const Description = styled.div`
-color: black;
+color: ${colors.black};
 text-align: justify;
 `;
 
@@ -72,8 +73,6 @@ width: 50%;
 const IconShoppingCart = styled.i`
 margin-left: 5px;
 `;
-
-
 
 const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, countProductsInCart, countTotalPrice}) => {
 
@@ -151,6 +150,5 @@ Product.propTypes = {
   countProductsInCart: PropTypes.func,
   countTotalPrice: PropTypes.func,
 };
-
 
 export default Product;

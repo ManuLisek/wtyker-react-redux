@@ -3,19 +3,20 @@ import RoundButton from '../RoundButton';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 const Item = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
 &:nth-child(even){
-    background-color: #ddd;
+    background-color: ${colors.light}
 }
 `;
 
 const TotalPrice = styled.div`
 font-weight: bold;
-color: green;
+color: ${colors.green};
 `;
 
 const ProductImg = styled.img`
@@ -25,7 +26,7 @@ height: 57px;
 `;
 
 const IconTrash = styled.i`
-color: #007065;
+color: ${colors.secondary};
 padding: 5px;
 width: 70px;
 height: 57px;
@@ -35,7 +36,7 @@ justify-content: center;
 font-size: 24px;
 cursor: pointer;
 &:hover {
-    color: #118176;
+    color: ${colors.secondaryHovered};
 }
 `;
 
@@ -80,7 +81,6 @@ font-weight: 500;
 `;
 
 const ProductPrice = styled(ProductTitle)``;
-
 
 const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) => {  
   

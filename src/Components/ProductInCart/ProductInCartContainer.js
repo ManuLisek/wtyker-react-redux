@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import ProductInCart from './ProductInCart';
 import {getTotalQuantity, getCart, getTotalPrice, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice} from '../../redux/cartRedux';
 
-
 const mapStateToProps = state => ({
   cart: getCart(state),
   totalQuantity: getTotalQuantity(state),
@@ -16,7 +15,5 @@ const mapDispatchToProps = dispatch => ({
   decreaseQuantityInCart: searchedQuantity => dispatch(decreaseQuantityInCart(searchedQuantity)),
   countTotalPrice: price => dispatch(countTotalPrice(price.toFixed(2))),
 });
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductInCart);

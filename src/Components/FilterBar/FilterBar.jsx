@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
 import size from '../../styles/breakpoints';
+import colors from '../../styles/colors';
 
 const FilterBarContainer = styled.div`
-background-color: white;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+background-color: ${colors.white};
+box-shadow: ${colors.shadow};
 border-radius: 5px;
 display: flex;
 justify-content: center;
@@ -25,8 +26,8 @@ margin: 20px 0 20px 0;
 `;
 
 const FilterBarContent = styled.div`
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 `;
 
 const Label = styled.label`
@@ -44,19 +45,7 @@ text-align: right;
 margin: 0 4px 0 4px;
 `;
 
-
-const FilterBar = ({products, filters, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters}) => {
-
-  const allTags = [];
-  const allBrands = [];
-  
-  products.forEach(product => {
-    allTags.push(...product.tags);
-    allBrands.push(product.brand);
-  });
-  
-  const tags = [...new Set(allTags)];
-  const brands = [...new Set(allBrands)];
+const FilterBar = ({filters, tags, brands, changePrice, addTag, removeTag, addBrand, removeBrand, changeSortingKey, clearFilters}) => {
 
   function handlePrice(type, value){
     changePrice(type, value);
@@ -141,8 +130,9 @@ const FilterBar = ({products, filters, changePrice, addTag, removeTag, addBrand,
 };
 
 FilterBar.propTypes = {
-  products: PropTypes.array,
   filters: PropTypes.object,
+  tags: PropTypes.array,
+  brands: PropTypes.array,
   changePrice: PropTypes.func,
   addTag: PropTypes.func,
   removeTag: PropTypes.func,

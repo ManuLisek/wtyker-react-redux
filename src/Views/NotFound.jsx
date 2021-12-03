@@ -1,11 +1,11 @@
 import React from 'react';
 
-function NotFound(){
+const NotFound = () => {
   return(
     <>
       <h3>Nie ma takiej strony.</h3>
     </>
   );
-}
+};
 
 export default NotFound;
