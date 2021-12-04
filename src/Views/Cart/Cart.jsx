@@ -11,7 +11,7 @@ import colors from '../../styles/colors';
 const Container = styled.div`
 width: 40%;
 overflow: hidden;
-min-height: 315px;
+min-height: 341px;
 background-color: ${colors.white};
 color: ${colors.black};
 border-radius: 10px;
@@ -50,6 +50,7 @@ display: flex;
 flex-direction: column;
 justify-content: end;
 align-items: end;
+flex-grow: 1;
 `;
 
 const OrderSummary = styled.div`

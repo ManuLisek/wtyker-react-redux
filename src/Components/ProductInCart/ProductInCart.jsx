@@ -77,7 +77,7 @@ align-items: start;
 
 const ProductTitle = styled.div`
 text-align: start;
-font-weight: 500;
+font-weight: 700;
 `;
 
 const ProductPrice = styled(ProductTitle)``;
@@ -138,7 +138,7 @@ const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductF
           </ProductPriceContainer>
         </OrderDetails>
       </Details>
-      <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}/>
+      <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)} aria-label="trash"/>
     </Item>
   );
 };
@@ -154,4 +154,4 @@ ProductInCart.propTypes = {
   countTotalPrice: PropTypes.func,
 };
   
-export default React.memo(ProductInCart);
+export default ProductInCart;

@@ -3,9 +3,9 @@ import colors from './colors';
 
 const GlobalStyles = createGlobalStyle`
   body {
-  color: #007065;
+  color: ${colors.secondary};
   background-color: ${colors.primary};
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
   }
   * {

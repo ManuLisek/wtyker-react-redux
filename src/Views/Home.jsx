@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Components/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import size from '../styles/breakpoints';
 
@@ -59,13 +59,14 @@ const Logo = styled.img`
 `;
 
 const Home = () => {
+    
   return (
     <Container>
       <ImageContainer>
-        <Image src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/home_fvomsv.webp'/>
+        <Image src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/home_fvomsv.webp' alt="shopping list" />
       </ImageContainer>
       <IntroContainer>
-        <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_1_ln9ki6.png'/>
+        <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_1_ln9ki6.png' alt="big Wtyker logo" height='140' width='88'/>
         <p>Zrób zakupy we Wtykerze</p>
         <p>w wybuchowo niskich cenach!</p>
         <Link to='/products'>

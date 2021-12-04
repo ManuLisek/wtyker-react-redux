@@ -65,12 +65,12 @@ const Navigation = ({cart}) => {
     <NavContainer>
       <div>
         <Link to='/'>
-          <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_vt9mu8.png' width="60" height="100" alt="logo"/>
+          <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_vt9mu8.png' alt="logo"/>
         </Link>
       </div>
       <IconsContainer>
         <Search/>
-        <Link to='/cart'>
+        <Link to='/cart' aria-label="cart">
           <IconCart className="fas fa-shopping-basket">
             <QuantityInCart>{cart.totalQuantity}</QuantityInCart>
           </IconCart>

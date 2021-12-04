@@ -51,7 +51,7 @@ const Search = ({changeSearchPhrase}) => {
   return(
     <SearchContainer>
       <Input type="text" placeholder="Znajdź produkt" ref={textInput} onKeyDown={handleKeyDown}></Input>
-      <Link to='/products'>
+      <Link to='/products'  aria-label="loupe">
         <IconSearch className="fas fa-search" onClick={handleClick}></IconSearch>
       </Link>
     </SearchContainer>

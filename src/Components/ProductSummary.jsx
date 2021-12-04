@@ -9,9 +9,9 @@ import colors from '../styles/colors';
 const Container = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: start;
 width: 220px;
-height: 300px;
+height: 330px;
 background-color: ${colors.white};
 border: 1px solid ${colors.lightgray};
 padding: 10px;
@@ -22,12 +22,16 @@ transition: transform 0.2s;
 }
 @media (max-width: ${size.lg}){
     width: 265px;
-    height: 360px;
+    height: 345px;
 }
 `;
 const Title = styled.div`
 color: ${colors.black};
 font-weight: bold;
+flex-grow: 1;
+@media (max-width: ${size.lg}){
+    flex-grow: unset;
+}
 `;
 const Price = styled.div`
 color: ${colors.green};
@@ -68,19 +72,21 @@ const ProductSummary = (props) => {
   });
 
   return (
-    <Link to={{
-      pathname: `/product/${product.id}`,
-      state: {
-        product,
-      },
-    }} >
-      <Container>
-        <Image src={product.image1} width="200" height="156" alt={product.title}/>
-        <Title>{product.title}</Title>
-        <Price>{product.price}zł</Price>
-        <Tags>{tags}</Tags>
-      </Container>
-    </Link>
+    <li>
+      <Link to={{
+        pathname: `/product/${product.id}`,
+        state: {
+          product,
+        },
+      }} >
+        <Container>
+          <Image src={product.image1} alt={product.title}/>
+          <Title>{product.title}</Title>
+          <Price>{product.price}zł</Price>
+          <Tags>{tags}</Tags>
+        </Container>
+      </Link>
+    </li>
   );
 };
 
