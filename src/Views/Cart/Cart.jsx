@@ -1,9 +1,9 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
+import ProductInCart from '../../Components/ProductInCart/ProductInCartContainer';
 import Button from '../../Components/Button';
 import { cartInitialState } from '../../redux/store';
 import Popup from '../../Components/Popup';
 import PropTypes from 'prop-types';
-import uuid from 'react-uuid';
 import styled from 'styled-components';
 import size from '../../styles/breakpoints';
 import colors from '../../styles/colors';
@@ -58,12 +58,14 @@ display: flex;
 `;
 
 const Description = styled.p`
-width: 165px;
+width: 170px;
+font-size: 15px;
 text-align: end;
 `;
 
 const Price = styled.p`
-width: 105px;
+width: 98px;
+font-size: 15px;
 text-align: end;
 `;
 
@@ -75,7 +77,6 @@ justify-content: center;
 
 const Cart = ({cart, clearCart}) => {
 
-  const ProductInCart = React.lazy(() => import('../../Components/ProductInCart/ProductInCartContainer'));
   const [showPopup, setShowPopup] = useState(false);
  
   function handleConfirmOrder(){
@@ -84,9 +85,7 @@ const Cart = ({cart, clearCart}) => {
 
   const allProductsInCart = cart.productsInCart.map(productInCart => {
     return(
-      <Suspense key={uuid()} fallback={null}>
-        <ProductInCart key={uuid()} productInCart={productInCart}/>
-      </Suspense>
+      <ProductInCart key={productInCart.id} productInCart={productInCart}/>
     );
   });
 

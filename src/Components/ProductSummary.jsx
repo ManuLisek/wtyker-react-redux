@@ -22,7 +22,7 @@ transition: transform 0.2s;
 }
 @media (max-width: ${size.lg}){
     width: 265px;
-    height: 345px;
+    height: 350px;
 }
 `;
 const Title = styled.div`
@@ -80,7 +80,7 @@ const ProductSummary = (props) => {
         },
       }} >
         <Container>
-          <Image src={product.image1} alt={product.title}/>
+          <Image src={product.image1} alt={product.title} width='210' height='165'/>
           <Title>{product.title}</Title>
           <Price>{product.price}zł</Price>
           <Tags>{tags}</Tags>
@@ -94,4 +94,4 @@ ProductSummary.propTypes = {
   product: PropTypes.object,
 };
 
-export default ProductSummary;
+export default React.memo(ProductSummary);

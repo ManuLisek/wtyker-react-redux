@@ -1,7 +1,6 @@
 import React from 'react';
 import RoundButton from '../RoundButton';
 import PropTypes from 'prop-types';
-import uuid from 'react-uuid';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
@@ -15,6 +14,10 @@ justify-content: space-between;
 `;
 
 const TotalPrice = styled.div`
+height: 25px;
+min-width: 90px;
+display: flex;
+justify-content: flex-end;
 font-weight: bold;
 color: ${colors.green};
 `;
@@ -27,8 +30,8 @@ height: 57px;
 
 const IconTrash = styled.i`
 color: ${colors.secondary};
-padding: 5px;
-width: 70px;
+padding: 3px;
+min-width: 70px;
 height: 57px;
 display: flex;
 align-items: center;
@@ -43,6 +46,11 @@ cursor: pointer;
 const QuantityContainer = styled.div`
 display: flex;
 width: 100px;
+`;
+
+const ProductQuantity = styled.div`
+width: 8px;
+height: 25px;
 `;
 
 const ProductPriceContainer = styled.div`
@@ -83,6 +91,8 @@ font-weight: 700;
 const ProductPrice = styled(ProductTitle)``;
 
 const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductFromCart, countProductsInCart, increaseQuantityInCart, decreaseQuantityInCart, countTotalPrice}) => {  
+
+  const productTotalPrice = `${(productInCart.quantity * productInCart.price).toFixed(2)}zł`;
   
   function handleIncreaseQuantity(){
     if((productInCart.quantity < 9)){
@@ -108,10 +118,10 @@ const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductF
   
   
   return (
-    <Item key={uuid()}>
+    <Item>
       <Details>
         <ProductDetails>
-          <ProductImg src={productInCart.image1}/>
+          <ProductImg src={productInCart.image1} width='70' height='57' alt={productInCart.title}/>
           <ProductInfo>
             <ProductTitle>
               {productInCart.title}
@@ -126,19 +136,19 @@ const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductF
             <RoundButton onClick={() => handleDecreaseQuantity(productInCart)}>
                 -
             </RoundButton>
-            <div>{productInCart.quantity}</div>
+            <ProductQuantity>{productInCart.quantity}</ProductQuantity>
             <RoundButton onClick={() => handleIncreaseQuantity(productInCart)}>
                 +
             </RoundButton>
           </QuantityContainer>
           <ProductPriceContainer>
             <TotalPrice className="cart-totalPrice">
-              {(productInCart.quantity * productInCart.price).toFixed(2)}zł
+              {productTotalPrice}
             </TotalPrice>
           </ProductPriceContainer>
         </OrderDetails>
       </Details>
-      <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)} aria-label="trash"/>
+      <IconTrash className="fas fa-trash-alt" onClick={() => handleRemoveProduct(productInCart)}/>
     </Item>
   );
 };

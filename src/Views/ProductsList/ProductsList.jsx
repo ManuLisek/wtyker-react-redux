@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import FilterBar from '../../Components/FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import uuid from 'react-uuid';
+// import uuid from 'react-uuid';
+import ProductSummary from '../../Components/ProductSummary';
 import size from '../../styles/breakpoints';
 
 const SectionContainer = styled.section`
@@ -37,11 +38,8 @@ width: 100%;
 
 const ProductsList = ({products}) => {
 
-  const ProductSummary = React.lazy(() => import('../../Components/ProductSummary'));
   const productsList = products.map(product => (
-    <Suspense key={uuid()} fallback={null}>
-      <ProductSummary  product={product} />
-    </Suspense>
+    <ProductSummary key={product.id} product={product} />
   ));
 
   return(

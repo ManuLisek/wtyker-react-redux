@@ -14,6 +14,7 @@ border-radius: 5px;
 margin-top: 12px;
 cursor: pointer;
 min-width: 100px;
+min-height: 45px;
 &:hover {
     background-color: ${colors.secondaryHovered};
 }

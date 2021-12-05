@@ -66,6 +66,11 @@ margin-top: 10px;
 align-items: center;
 `;
 
+const ProductQuantity = styled.div`
+width: 8px;
+height: 25px;
+`;
+
 const ButtonContainer = styled.div`
 width: 50%;
 `;
@@ -126,7 +131,7 @@ const Product = ({cart, products, totalQuantity, totalPrice, addProductToCart, c
         <AmountContainer>
           <div>Ilość:</div>
           <RoundButton onClick={handleDecreaseItemsQuantity}>-</RoundButton>
-          <div>{itemsQuantity}</div>
+          <ProductQuantity>{itemsQuantity}</ProductQuantity>
           <RoundButton onClick={handleIncreaseItemsQuantity}>+</RoundButton>
         </AmountContainer>
         <ButtonContainer>
