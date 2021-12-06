@@ -10,6 +10,7 @@ display: flex;
 flex-direction: column;
 height: 100vh;
 `;
+
 const Layout = styled.main`
 width: 100%;
 display: flex;

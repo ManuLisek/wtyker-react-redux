@@ -25,6 +25,7 @@ transition: transform 0.2s;
     height: 350px;
 }
 `;
+
 const Title = styled.div`
 color: ${colors.black};
 font-weight: bold;
@@ -33,17 +34,20 @@ flex-grow: 1;
     flex-grow: unset;
 }
 `;
+
 const Price = styled.div`
 color: ${colors.green};
 font-weight: bold;
 align-self: flex-start;
 `;
+
 const Tags = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: flex-start;
 `;
+
 const Tag = styled.p`
 background-color: ${colors.dark};
 color: ${colors.white};
@@ -52,6 +56,7 @@ font-size: 14px;
 padding: 5px 8px;
 margin: 3px;
 `;
+
 const Image = styled.img`
 width: 100%;
 height: auto;
@@ -82,7 +87,7 @@ const ProductSummary = (props) => {
         <Container>
           <Image src={product.image1} alt={product.title} width='210' height='165'/>
           <Title>{product.title}</Title>
-          <Price>{product.price}zł</Price>
+          <Price>{(product.price).toFixed(2)}zł</Price>
           <Tags>{tags}</Tags>
         </Container>
       </Link>

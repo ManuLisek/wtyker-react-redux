@@ -101,7 +101,7 @@ const Cart = ({cart, clearCart}) => {
             <OrderContainer>
               <OrderSummary>
                 <Description>Koszt dostawy:</Description>
-                <Price>{cart.delivery}zł</Price>
+                <Price>{(cart.delivery).toFixed(2)}zł</Price>
               </OrderSummary>
               <OrderSummary>
                 <Description>Wartość zamówienia:</Description>

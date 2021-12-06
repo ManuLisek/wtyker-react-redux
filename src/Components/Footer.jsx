@@ -92,6 +92,7 @@ margin-top: 16px;
 const EmailError = styled.div`
 font-size: 12px;
 height: 26px;
+width: 183px;
 color: ${colors.maroon};
 padding: 5px;
 `;
