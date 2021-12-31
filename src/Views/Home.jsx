@@ -3,12 +3,14 @@ import Button from '../Components/Button';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import size from '../styles/breakpoints';
+import { slideLeft, slideRight, slideDown } from '../styles/animations';
 
 const Container = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
+overflow: hidden;
 @media (max-width: ${size.md}){
     flex-direction: column;
 }
@@ -21,9 +23,11 @@ align-items: flex-end;
 justify-content: center;
 width: 55%;
 height: 267px;
+animation: ${slideRight} 2s linear;
 @media (max-width: ${size.md}){
     align-items: center;
     width: 50%;
+    animation: ${slideDown} 2s linear;
 }
 `;
 
@@ -42,10 +46,12 @@ align-items: flex-start;
 justify-content: center;
 padding-bottom: 5px;
 width: 45%;
+animation: ${slideLeft} 2s linear;
 @media (max-width: ${size.md}){
     align-items: center;
     text-align: center;
     width: 50%;
+    animation: ${slideDown} 2s linear;
 }
 `;
 
