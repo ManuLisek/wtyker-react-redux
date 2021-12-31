@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/wtyker-react-redux/static/js/main.0bcd633d.chunk.js",
+    "main.js.map": "/wtyker-react-redux/static/js/main.0bcd633d.chunk.js.map",
+    "runtime-main.js": "/wtyker-react-redux/static/js/runtime-main.62ea3206.js",
+    "runtime-main.js.map": "/wtyker-react-redux/static/js/runtime-main.62ea3206.js.map",
+    "static/js/2.4727273b.chunk.js": "/wtyker-react-redux/static/js/2.4727273b.chunk.js",
+    "static/js/2.4727273b.chunk.js.map": "/wtyker-react-redux/static/js/2.4727273b.chunk.js.map",
+    "index.html": "/wtyker-react-redux/index.html",
+    "static/js/2.4727273b.chunk.js.LICENSE.txt": "/wtyker-react-redux/static/js/2.4727273b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.62ea3206.js",
+    "static/js/2.4727273b.chunk.js",
+    "static/js/main.0bcd633d.chunk.js"
+  ]
+}
