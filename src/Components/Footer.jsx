@@ -48,7 +48,7 @@ border-radius: 5px;
 line-height: 30px;
 text-align: center;
 font-size: 18px;
-margin: 10px 8px 10px 0;
+margin-right: 8px;
 `;
 
 const Facebook = styled(Icon)`
@@ -66,13 +66,12 @@ const Twitter = styled(Icon)`
 background-color: ${colors.twitter};
 `;
 
-const MediaContainer = styled.div`
+const Link = styled.a`
 display: flex;
 align-items: center;
-`;
-
-const IconDescription = styled.p`
-margin-right: 15px;
+width: max-content;
+margin-bottom: 15px;
+color: ${colors.white};
 `;
 
 const ButtonContainer = styled.div`
@@ -149,18 +148,18 @@ const Footer = () => {
       <Info>
         <Header>Śledź nas</Header>
         <Icons>
-          <MediaContainer>
+          <Link target="_blank" href="https://www.facebook.com/" rel="noreferrer">
             <Facebook className="fab fa-facebook-f"/>
-            <IconDescription>Facebook</IconDescription>
-          </MediaContainer>
-          <MediaContainer>
+            <p>Facebook</p>
+          </Link>
+          <Link target="_blank" href="https://www.youtube.com/" rel="noreferrer">
             <Youtube className="fas fa-play"/>
-            <IconDescription>Youtube</IconDescription>
-          </MediaContainer>
-          <MediaContainer>
+            <p>Youtube</p>
+          </Link>
+          <Link target="_blank" href="https://www.twitter.com/" rel="noreferrer">
             <Twitter className="fab fa-twitter"/>
-            <IconDescription>Twitter</IconDescription>
-          </MediaContainer>
+            <p>Twitter</p>
+          </Link>
         </Icons>
       </Info>
       <Info>
