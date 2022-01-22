@@ -2,7 +2,6 @@ import React from 'react';
 import FilterBar from '../../Components/FilterBar/FilterBarContainer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import uuid from 'react-uuid';
 import ProductSummary from '../../Components/ProductSummary';
 import size from '../../styles/breakpoints';
 

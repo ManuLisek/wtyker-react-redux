@@ -92,7 +92,7 @@ const Cart = ({cart, clearCart}) => {
   return (
     <Container>
       {
-        cart.productsInCart.length != 0 
+        cart.productsInCart.length !== 0 
           ? 
           <>
             <ItemsContainer>

@@ -116,7 +116,6 @@ const Footer = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [showEmailError, setShowEmailError] = useState(false);
 
   function validateEmail(e){
     const email = e.target.value;
@@ -131,14 +130,12 @@ const Footer = () => {
   function handleEmailSent(){
     if(inputValue === '') {
       setEmailError('To pole musi być wypełnione');
-      setShowEmailError(true);
     } 
     else if(!emailError){
       setShowPopup(true);
       setInputValue('');
       setEmailError('');
-      setShowEmailError(false);
-    } else setShowEmailError(true); 
+    }
   }
 
   function handleKeyDown(e){
@@ -179,7 +176,7 @@ const Footer = () => {
         <EmailContainer>
           <InputContainer>
             <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail} onKeyDown={handleKeyDown}/>
-            <EmailError>{`${showEmailError ? emailError : ''}`}</EmailError>
+            <EmailError>{emailError ? emailError : ''}</EmailError>
           </InputContainer>
           <ButtonContainer>
             <Button onClick={() => handleEmailSent()}>Wyślij</Button>

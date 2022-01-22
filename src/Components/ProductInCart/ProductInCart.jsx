@@ -121,7 +121,7 @@ const ProductInCart = ({productInCart, totalQuantity, totalPrice, removeProductF
     <Item>
       <Details>
         <ProductDetails>
-          <ProductImg src={productInCart.image1} width='70' height='57' alt={productInCart.title}/>
+          <ProductImg src={productInCart.image1} alt={productInCart.title}/>
           <ProductInfo>
             <ProductTitle>
               {productInCart.title}

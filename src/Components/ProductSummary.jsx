@@ -85,7 +85,7 @@ const ProductSummary = (props) => {
         },
       }} >
         <Container>
-          <Image src={product.image1} alt={product.title} width='210' height='165'/>
+          <Image src={product.image1} alt={product.title}/>
           <Title>{product.title}</Title>
           <Price>{(product.price).toFixed(2)}zł</Price>
           <Tags>{tags}</Tags>

@@ -73,10 +73,10 @@ const Home = () => {
   return (
     <Container>
       <ImageContainer>
-        <Image src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/home_fvomsv.webp' alt="shopping list" height='400' width='267' />
+        <Image src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226767/wtyker/home_fvomsv.webp' alt="shopping list"/>
       </ImageContainer>
       <IntroContainer>
-        <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_1_ln9ki6.png' alt="big Wtyker logo" height='200' width='125'/>
+        <Logo src='https://res.cloudinary.com/dorwcwygq/image/upload/v1636226766/wtyker/Wtyker_1_ln9ki6.png' alt="big Wtyker logo"/>
         <Description>Zrób zakupy we Wtykerze</Description>
         <Description>w wybuchowo niskich cenach!</Description>
         <Link to='/products'>
