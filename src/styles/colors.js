@@ -16,5 +16,5 @@ const colors = {
   twitter: '#00acee',
   shadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
 };
-  
+
 export default colors;

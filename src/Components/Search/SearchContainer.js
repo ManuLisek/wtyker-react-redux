@@ -1,11 +1,9 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Search from './Search';
-import {
-  changeSearchPhrase,
-} from '../../redux/filtersRedux';
+import { changeSearchPhrase } from '../../redux/filtersRedux';
 
-const mapDispatchToProps = dispatch => ({
-  changeSearchPhrase: phrase => dispatch(changeSearchPhrase(phrase)),
+const mapDispatchToProps = (dispatch) => ({
+  changeSearchPhrase: (phrase) => dispatch(changeSearchPhrase(phrase)),
 });
 
 export default connect(null, mapDispatchToProps)(Search);

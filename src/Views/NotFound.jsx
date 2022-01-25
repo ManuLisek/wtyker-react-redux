@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NotFound = () => {
-  return(
+  return (
     <>
       <h3>Nie ma takiej strony.</h3>
     </>

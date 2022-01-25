@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Navigation from './Navigation';
-import {getCart} from '../../redux/cartRedux';
+import { getCart } from '../../redux/cartRedux';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   cart: getCart(state),
 });
 

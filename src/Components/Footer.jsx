@@ -7,116 +7,115 @@ import size from '../styles/breakpoints';
 import colors from '../styles/colors';
 
 const FooterContainer = styled.footer`
-background-color: ${colors.dark};
-color: ${colors.white};
-flex-basis: 100%;
-display: flex;
-justify-content: space-evenly;
-margin-top: 180px;
-padding-bottom: 40px;
-bottom: 0;
-max-height: 280px;
-@media (max-width: ${size.lg}){
+  background-color: ${colors.dark};
+  color: ${colors.white};
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 180px;
+  padding-bottom: 40px;
+  bottom: 0;
+  max-height: 280px;
+  @media (max-width: ${size.lg}) {
     flex-direction: column;
     align-items: right;
     max-height: unset;
-}
+  }
 `;
 
 const Header = styled.h3`
-padding: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
 `;
 
 const Info = styled.div`
-flex-basis: 30%;
-padding: 12px;
-@media (max-width: ${size.lg}){
+  flex-basis: 30%;
+  padding: 12px;
+  @media (max-width: ${size.lg}) {
     flex-basis: 100%;
-}
+  }
 `;
 
 const Icons = styled.div`
-flex-direction: column;
-align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const Icon = styled.i`
-min-height: 30px;
-min-width: 30px;
-background-color: ${colors.white};
-border-radius: 5px;
-line-height: 30px;
-text-align: center;
-font-size: 18px;
-margin-right: 8px;
+  min-height: 30px;
+  min-width: 30px;
+  background-color: ${colors.white};
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 18px;
+  margin-right: 8px;
 `;
 
 const Facebook = styled(Icon)`
-background-color: ${colors.facebook};
-color: ${colors.white};
+  background-color: ${colors.facebook};
+  color: ${colors.white};
 `;
 
 const Youtube = styled(Icon)`
-background-color: ${colors.youtube};
-color: ${colors.white};
-font-size: 10px;
+  background-color: ${colors.youtube};
+  color: ${colors.white};
+  font-size: 10px;
 `;
 
 const Twitter = styled(Icon)`
-background-color: ${colors.twitter};
+  background-color: ${colors.twitter};
 `;
 
 const Link = styled.a`
-display: flex;
-align-items: center;
-width: max-content;
-margin-bottom: 15px;
-color: ${colors.white};
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin-bottom: 15px;
+  color: ${colors.white};
 `;
 
 const ButtonContainer = styled.div`
-margin-left: 20px;
+  margin-left: 20px;
 `;
 
 const Input = styled.input`
-background-color: ${colors.white};
-border: 1px solid ${colors.white};
-padding: 2px;
-margin-top: 16px;
-&:focus {
+  background-color: ${colors.white};
+  border: 1px solid ${colors.white};
+  padding: 2px;
+  margin-top: 16px;
+  &:focus {
     border: 1px solid ${colors.black};
-}
+  }
 `;
 
 const EmailError = styled.div`
-font-size: 12px;
-height: 26px;
-width: 183px;
-color: ${colors.maroon};
-padding: 5px;
+  font-size: 12px;
+  height: 26px;
+  width: 183px;
+  color: ${colors.maroon};
+  padding: 5px;
 `;
 
 const EmailContainer = styled.div`
-display: flex;
-justify-content: left;
-flex-wrap: wrap;
-padding: 10px 0;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding: 10px 0;
 `;
 
 const InputContainer = styled.div`
-display: flex;
-flex-direction: column;
-max-width: 250px;
-padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  padding: 5px 0;
 `;
 
 const Footer = () => {
-
   const [showPopup, setShowPopup] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  function validateEmail(e){
+  function validateEmail(e) {
     const email = e.target.value;
     setInputValue(email);
     if (validator.isEmail(email)) {
@@ -125,39 +124,50 @@ const Footer = () => {
       setEmailError('Podaj poprawny adres email');
     }
   }
-  
-  function handleEmailSent(){
-    if(inputValue === '') {
+
+  function handleEmailSent() {
+    if (inputValue === '') {
       setEmailError('To pole musi być wypełnione');
-    } 
-    else if(!emailError){
+    } else if (!emailError) {
       setShowPopup(true);
       setInputValue('');
       setEmailError('');
     }
   }
 
-  function handleKeyDown(e){
+  function handleKeyDown(e) {
     if (e.key === 'Enter') {
       handleEmailSent();
     }
   }
 
-  return(
+  return (
     <FooterContainer>
       <Info>
         <Header>Śledź nas</Header>
         <Icons>
-          <Link target="_blank" href="https://www.facebook.com/" rel="noreferrer">
-            <Facebook className="fab fa-facebook-f"/>
+          <Link
+            target="_blank"
+            href="https://www.facebook.com/"
+            rel="noreferrer"
+          >
+            <Facebook className="fab fa-facebook-f" />
             <p>Facebook</p>
           </Link>
-          <Link target="_blank" href="https://www.youtube.com/" rel="noreferrer">
-            <Youtube className="fas fa-play"/>
+          <Link
+            target="_blank"
+            href="https://www.youtube.com/"
+            rel="noreferrer"
+          >
+            <Youtube className="fas fa-play" />
             <p>Youtube</p>
           </Link>
-          <Link target="_blank" href="https://www.twitter.com/" rel="noreferrer">
-            <Twitter className="fab fa-twitter"/>
+          <Link
+            target="_blank"
+            href="https://www.twitter.com/"
+            rel="noreferrer"
+          >
+            <Twitter className="fab fa-twitter" />
             <p>Twitter</p>
           </Link>
         </Icons>
@@ -174,18 +184,25 @@ const Footer = () => {
         <p>Zostaw nam swojego maila żeby być na bieżąco z promocjami!</p>
         <EmailContainer>
           <InputContainer>
-            <Input type="text" value={inputValue} placeholder="Twój adres email..." onChange={validateEmail} onKeyDown={handleKeyDown}/>
+            <Input
+              type="text"
+              value={inputValue}
+              placeholder="Twój adres email..."
+              onChange={validateEmail}
+              onKeyDown={handleKeyDown}
+            />
             <EmailError>{emailError ? emailError : ''}</EmailError>
           </InputContainer>
           <ButtonContainer>
             <Button onClick={() => handleEmailSent()}>Wyślij</Button>
           </ButtonContainer>
         </EmailContainer>
-        <Popup trigger={showPopup} closePopup={()=> setShowPopup(false)}>
+        <Popup trigger={showPopup} closePopup={() => setShowPopup(false)}>
           <h3>Teraz nie przegapisz żadnej promocji!</h3>
         </Popup>
       </Info>
     </FooterContainer>
-  );};
+  );
+};
 
-export default Footer; 
+export default Footer;
